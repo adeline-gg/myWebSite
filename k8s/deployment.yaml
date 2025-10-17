@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adeline-gueret-site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adeline-gueret-site
+  template:
+    metadata:
+      labels:
+        app: adeline-gueret-site
+    spec:
+      containers:
+      - name: nginx
+        image: xgueret/adeline-gueret-site:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adeline-gueret-service
+spec:
+  selector:
+    app: adeline-gueret-site
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

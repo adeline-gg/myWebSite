@@ -1,0 +1,40 @@
+# Force UTF-8 pour tous les fichiers texte
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .json .md
+
+# Forcer le Content-Type UTF-8 pour les fichiers spécifiques
+<FilesMatch "\.(html|css|js|json|md)$">
+    Header set Content-Type "text/html; charset=utf-8"
+</FilesMatch>
+
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css; charset=utf-8"
+</FilesMatch>
+
+<FilesMatch "\.js$">
+    Header set Content-Type "application/javascript; charset=utf-8"
+</FilesMatch>
+
+<FilesMatch "\.json$">
+    Header set Content-Type "application/json; charset=utf-8"
+</FilesMatch>
+
+<FilesMatch "\.md$">
+    Header set Content-Type "text/markdown; charset=utf-8"
+</FilesMatch>
+
+# Activer la compression gzip pour de meilleures performances
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json text/markdown
+</IfModule>
+
+# Cache control pour de meilleures performances
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType application/json "access plus 1 week"
+    ExpiresByType text/markdown "access plus 1 week"
+</IfModule>

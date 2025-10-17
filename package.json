@@ -1,0 +1,43 @@
+{
+  "name": "adeline-gueret-site",
+  "version": "1.0.0",
+  "description": "Site vitrine pour Adeline GUERET - Analyste du comportement certifiée BCaBA",
+  "main": "js/app.js",
+  "scripts": {
+    "dev": "npx http-server -p 8080 --cors -c-1 --brotli",
+    "build": "npm run minify:css && npm run minify:js",
+    "minify:css": "echo 'CSS minification - à implémenter avec cssnano'",
+    "minify:js": "echo 'JS minification - à implémenter avec terser'",
+    "docker:build": "docker build -t xgueret/adeline-gueret-site:latest .",
+    "docker:run": "docker run -p 8080:80 xgueret/adeline-gueret-site:latest",
+    "k8s:deploy": "helm upgrade --install adeline-gueret ./k8s/helm/adeline-gueret-site",
+    "test": "echo 'Tests à implémenter avec Playwright/Cypress'",
+    "lint": "echo 'Linting à implémenter avec ESLint'"
+  },
+  "keywords": [
+    "autisme",
+    "TSA",
+    "TDAH",
+    "neurodéveloppement",
+    "ABA",
+    "BCaBA",
+    "psychologie"
+  ],
+  "author": "Xavier Gueret <xgueret@example.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "marked": "^11.1.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xgueret/adeline-gueret.git"
+  }
+}

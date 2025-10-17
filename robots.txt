@@ -1,0 +1,47 @@
+# robots.txt pour adelineguillotgueret.fr
+# https://www.robotstxt.org/
+
+# Autoriser tous les robots d'indexation
+User-agent: *
+Allow: /
+
+# Empêcher l'indexation de certains répertoires (si nécessaire)
+# Disallow: /backend/
+# Disallow: /js/
+# Disallow: /content/
+
+# Sitemap
+Sitemap: https://adelineguillotgueret.fr/sitemap.xml
+
+# Délai entre les requêtes (en secondes) - optionnel
+Crawl-delay: 1
+
+# Instructions spécifiques pour certains robots
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Bloquer les bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
