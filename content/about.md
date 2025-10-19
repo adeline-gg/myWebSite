@@ -4,7 +4,7 @@ Je m'appelle **Adeline Guillot Gueret**, enseignante spécialisée de formation 
 
 Pendant plus de **10 ans**, j'ai exercé en établissement médico-social où j'ai pu accompagner de nombreux enfants et leurs familles. Cette expérience m'a permis d'acquérir une vision globale des besoins éducatifs particuliers, et surtout de développer une approche centrée sur la collaboration entre enfants, parents et équipes éducatives.
 
-🔎 Désireuse d'approfondir mes connaissances, j'ai ensuite suivi plusieurs **formations complémentaires** dans le domaine des **troubles du neurodéveloppement (TND)**, de l'**autorégulation** et de l'**analyse de pratiques professionnelles** (Epsilon à l'école, CESUP, Epsilon Melia, ENSEIS Management).
+🔎 Désireuse d'approfondir mes connaissances, j'ai ensuite suivi plusieurs **formations complémentaires** dans le domaine des **troubles du neurodéveloppement (TND)**, de l'**autorégulation** et de l'**analyse de pratiques professionnelles** (Epsilon à l'école, Epsilon Melia, A+ autoregulation, ENSEIS Management).
 
 Ces apprentissages m'ont conduite à élargir mon champ d'action :
 
