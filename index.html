@@ -1152,7 +1152,8 @@
             <div class="contact-info" id="contact-info-container">
                 <!-- Les informations de contact seront générées par JavaScript -->
             </div>
-            <form class="contact-form">
+            <form class="contact-form" name="contact" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact" />
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
                     <input type="text" id="name" name="name" required>
