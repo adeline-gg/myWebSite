@@ -9,7 +9,7 @@ Pendant plus de **10 ans**, j'ai exercé en établissement médico-social où j'
 Ces apprentissages m'ont conduite à élargir mon champ d'action :
 
 - **Accompagner les enfants** à travers un soutien scolaire spécifique et des bilans adaptés
-- **Soutenir les parents** grâce à une guidance parentale personnalisée
+- **Soutenir les parents** grâce à un accompagnement personnalisé
 - **Former et superviser les professionnels** de l'éducation et du médico-social pour favoriser des pratiques inclusives
 
 Aujourd'hui, installée en **Guadeloupe**, j'interviens auprès des enfants, de leur famille, des établissements scolaires et médico-sociaux pour transmettre des outils concrets et construire, ensemble, des environnements plus inclusifs, bienveillants et adaptés.

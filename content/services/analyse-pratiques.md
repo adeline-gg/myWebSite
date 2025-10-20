@@ -1,16 +1,18 @@
-Formée à l'**animation de groupes d'analyse de la pratique professionnelle** par **Epsilon Melia**, j'accompagne les équipes dans une démarche réflexive, collaborative et bienveillante.
+
+FormÃ©e Ã  l'**animation de groupes d'analyse de la pratique professionnelle** par **Epsilon Melia**, j'accompagne les Ã©quipes dans une dÃ©marche rÃ©flexive, collaborative et bienveillante.
 
 ### Ce que je propose :
 
- **Mise en place d'un espace sécurisé** où chacun peut partager ses expériences
+âœ“ **Mise en place d'un espace sÃ©curisÃ©** oÃ¹ chacun peut partager ses expÃ©riences
 
- **Développement de la résolution collaborative de problèmes** et du leadership coopératif
+âœ“ **DÃ©veloppement de la rÃ©solution collaborative de problÃ©mes** et du leadership coopÃ©ratif
 
- **Amélioration du bien-être professionnel** grâce à l'écoute active et à la recherche collective de solutions
+âœ“ **AmÃ©lioration du bien-Ãªtre professionnel** grÃ¢ce Ã  l'Ã©coute active et Ã  la recherche collective de solutions
 
- **Renforcement de la cohésion** et du sens dans les pratiques d'accompagnement
+âœ“ **Renforcement de la cohÃ©sion** et du sens dans les pratiques d'accompagnement
 
 ### Pour qui ?
-Équipes éducatives et médico-sociales souhaitant prendre du recul, analyser leurs expériences et enrichir leurs pratiques au service des enfants et familles accompagnés.
+
+Equipes Ã©ducatives et mÃ©dico-sociales souhaitant prendre du recul, analyser leurs expÃ©riences et enrichir leurs pratiques au service des enfants et familles accompagnÃ©s.
 
 **Tarif :** Sur devis
