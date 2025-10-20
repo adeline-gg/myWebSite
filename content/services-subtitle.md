@@ -1,1 +1,0 @@
-En tant qu'**enseignante spécialisée de formation**, j'accompagne enfants, parents et professionnels afin de favoriser la réussite et l'inclusion scolaire, en particulier auprès des enfants présentant des **troubles du neurodéveloppement (TSA, TDI, TDA/H...)**, une **déficience visuelle** ou des **difficultés d'apprentissage**.
