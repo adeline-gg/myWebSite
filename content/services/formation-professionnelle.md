@@ -2,15 +2,20 @@ Mon parcours m'a permis de développer une expertise solide dans l'accompagnemen
 
 ### Ce que je propose :
 
-✓ **Formatrice spécialisée** : Sessions sur les TND, TSA, autorégulation et inclusion scolaire, en alliant apports théoriques et outils pratiques issus de mon expérience de terrain
+✓ **Formatrice spécialisée** : Animation de sessions autour des TND, TSA, autorégulation et inclusion scolaire, en alliant apports théoriques et outils concrets issus de mon expérience de terrain.
 
-✓ **Superviseure** : Accompagnement des professionnels dans l'amélioration de leurs pratiques, la gestion des situations complexes et le développement d'une approche collaborative
+**✓ Superviseure en école d’autorégulation** : accompagnement des professionnels (en collaboration avec A+ Autorégulation et Epsilon à l’école) pour favoriser la régulation émotionnelle, la coopération et le bien-être des élèves.
 
-✓ **Expérience EMAS** : Mon expérience en tant que coordonnatrice d'une Équipe Mobile d'Appui à la Scolarisation m'a permis de travailler au plus près des établissements scolaires, en lien avec enseignants, AESH et professionnels médico-sociaux
+**✓ Supervision d’équipes pluridisciplinaires :** soutien au développement des compétences relationnelles, à la réflexion collective et à l’analyse de pratiques dans une démarche bienveillante et constructive.
 
-✓ **Expertise reconnue** : Grâce à ma certification CESUP (Epsilon à l'école), j'apporte une expertise dans la mise en place d'outils pédagogiques adaptés et de programmes structurés favorisant la réussite scolaire des enfants à besoins spécifiques
+**✓ Coordonnatrice d’une Équipe Mobile d’Appui à la Scolarisation (EMAS) :** travail de liaison entre enseignants, AESH, familles et professionnels médico-sociaux pour renforcer l’inclusion et la continuité des parcours scolaires.
+
+**✓ Interventions en milieux variés :** expérience dans des écoles maternelles et élémentaires, écoles d’autorégulation, IME, ITEP, instituts pour déficients visuels et établissements pour adultes, à la fois comme enseignante spécialisée et accompagnante indépendante.
+
+**✓ Certification CESUP – Epsilon à l’école :** expertise reconnue dans la mise en place de programmes structurés et d’outils pédagogiques adaptés, favorisant la réussite et l’autonomie des enfants à besoins spécifiques.
 
 ### Pour qui ?
-Équipes éducatives, enseignants, AESH, périscolaire, éducateurs, professionnels du médico-social.
+
+Équipes éducatives, enseignants, AESH, éducateurs, professionnels du médico-social souhaitant renforcer leurs compétences et améliorer leurs pratiques au service de l’inclusion.
 
 **Tarif :** Sur devis

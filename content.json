@@ -3,7 +3,7 @@
         "title": "Adeline Guillot Gueret - Soutenir, Former, Accompagner",
         "logo": "Adeline Guillot Gueret",
         "slogan": "Soutenir, former, accompagner",
-        "copyright": "Adeline Guillot Gueret - Tous droits réservés | Site créé avec ❤️ pour l'inclusion scolaire"
+        "copyright": "© 2025 Adeline Guillot Gueret - Tous droits réservés | SIREN: 978 658 607 | Site créé avec ❤️ pour l'inclusion scolaire"
     },
     "navigation": {
         "ctaButton": "Me contacter",
@@ -39,19 +39,19 @@
                 "title": "Soutien scolaire spécifique & bilans scolaires",
                 "teaser": "Accompagnement individualisé pour enfants à besoins éducatifs particuliers. Évaluation et plan de soutien adapté.",
                 "text": "content/services/soutien-scolaire.md",
-                "price": "50€/heure"
+                "price": "45€/heure, 250€ forfait évaluation"
             },
             {
                 "icon": "👨‍👩‍👧",
                 "title": "Guidance parentale",
                 "teaser": "Soutien aux parents pour mieux comprendre les besoins de leur enfant et disposer d'outils concrets pour l'aider.",
                 "text": "content/services/guidance-parentale.md",
-                "price": "60€/heure"
+                "price": "55€/heure"
             },
             {
                 "icon": "👩‍🏫",
                 "title": "Formation & supervision d'équipes",
-                "teaser": "Formations et accompagnement des équipes éducatives et médico-sociales pour favoriser l'inclusion scolaire.",
+                "teaser": "Formations et accompagnement de la communauté éducative et des équipes médico-sociales pour favoriser l'inclusion scolaire.",
                 "text": "content/services/formation-professionnelle.md",
                 "price": "Sur devis"
             },
@@ -68,11 +68,10 @@
         "title": "Domaines d'Expertise",
         "subtitle": "content/expertise-subtitle.md",
         "items": [
-            { "icon": "🧠", "title": "Troubles du neurodéveloppement (TND)", "text": "Accompagnement spécialisé des enfants TND" },
             { "icon": "👁️", "title": "Déficience visuelle", "text": "Enfants déficients visuels avec troubles associés" },
-            { "icon": "🧩", "title": "Troubles du spectre de l'autisme (TSA)", "text": "Accompagnement et inclusion des enfants TSA" },
-            { "icon": "⚡", "title": "TDA/H", "text": "Trouble Déficit de l'Attention avec ou sans Hyperactivité" },
-            { "icon": "🎯", "title": "Trouble du développement intellectuel (TDI)", "text": "Soutien adapté aux enfants TDI" },
+            { "icon": "🧩", "title": "Troubles du spectre de l'autisme (TSA)", "text": "Accompagnement et inclusion des enfants ayant un TSA" },
+            { "icon": "⚡", "title": "Trouble Déficit de l'Attention (TDA/H)", "text": "Accompagnement et inclusion des enfants ayant un TDA/H" },
+            { "icon": "🎯", "title": "Trouble du développement intellectuel (TDI)", "text": "Soutien adapté aux enfants avec un TDI" },
             { "icon": "📚", "title": "Difficultés d'apprentissage", "text": "Accompagnement scolaire personnalisé" },
             { "icon": "🌿", "title": "Autorégulation", "text": "Stratégies et outils pour l'autorégulation" }
         ]
@@ -83,7 +82,7 @@
         "items": [
             {
                 "service": "Soutien scolaire spécifique",
-                "price": "50€",
+                "price": "45€",
                 "unit": "/ heure",
                 "details": "Accompagnement individualisé - Exonération de TVA - Déduction fiscale possible",
                 "highlight": false
@@ -97,7 +96,7 @@
             },
             {
                 "service": "Guidance parentale",
-                "price": "60€",
+                "price": "55€",
                 "unit": "/ heure",
                 "details": "Soutien personnalisé aux parents - Outils concrets",
                 "highlight": false
@@ -136,7 +135,8 @@
             "CEPRO 2 (Epsilon à l'école)",
             "CESUP (Epsilon à l'école)",
             "Epsilon Melia",
-            "ENSEIS Management"
+            "ENSEIS Management",
+            "A+ Autorégulation"
         ],
         "button": { "text": "Me contacter", "href": "#contact" },
         "image": {
@@ -179,8 +179,7 @@
             "links": [
                 { "text": "Mentions Légales", "href": "#" },
                 { "text": "Politique de Confidentialité", "href": "#" },
-                { "text": "Tarifs", "href": "#tarifs" },
-                { "text": "Ressources", "href": "#" }
+                { "text": "Tarifs", "href": "#tarifs" }
             ]
         },
         "social": {
