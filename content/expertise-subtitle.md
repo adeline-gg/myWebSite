@@ -1,1 +1,0 @@
-Spécialisée dans les **troubles du neurodéveloppement (TND)** et la **déficience visuelle**, j'interviens auprès d'enfants présentant diverses difficultés pour favoriser leur inclusion et leur réussite scolaire.

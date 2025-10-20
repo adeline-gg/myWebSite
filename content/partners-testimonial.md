@@ -1,1 +1,0 @@
-Notre collaboration avec Mme GUERET nous a permis d'améliorer significativement la prise en charge des enfants TSA dans notre établissement. Son expertise et sa bienveillance font d'elle une partenaire précieuse.
