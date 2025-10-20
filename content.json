@@ -156,7 +156,7 @@
             {
                 "icon": "✉️",
                 "title": "Email",
-                "lines": ["contact@adelineguillotgueret.fr"]
+                "lines": ["adeline.gueret.g@gmail.com"]
             }
         ]
     },
@@ -177,16 +177,16 @@
         "usefulLinks": {
             "title": "Liens Utiles",
             "links": [
-                { "text": "Mentions Légales", "href": "#" },
-                { "text": "Politique de Confidentialité", "href": "#" },
+                { "text": "Mentions Légales", "href": "#mentions-legales" },
+                { "text": "Politique de Confidentialité", "href": "#politique-confidentialite" },
                 { "text": "Tarifs", "href": "#tarifs" }
             ]
         },
         "social": {
             "title": "Suivez-moi",
             "links": [
-                { "text": "Facebook", "href": "#" },
-                { "text": "LinkedIn", "href": "#" },
+                { "text": "Facebook", "href": "https://www.facebook.com/share/1Cth7f9BC4/" },
+                { "text": "LinkedIn", "href": "https://www.linkedin.com/in/adeline-gueret-34257b172/" },
                 { "text": "Email", "href": "#contact" }
             ]
         }
