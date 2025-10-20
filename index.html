@@ -214,13 +214,19 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/contact-form.js"></script>
+    <script src="js/legal-modal.js"></script>
     <script>
         // Smooth Scrolling - using event delegation for dynamically loaded links
         document.addEventListener('click', function(e) {
             const anchor = e.target.closest('a[href^="#"]');
             if (anchor) {
+                const href = anchor.getAttribute('href');
+                // Skip modal links
+                if (href === '#mentions-legales' || href === '#politique-confidentialite') {
+                    return;
+                }
                 e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -406,7 +412,7 @@
       "priceRange": "$$",
       "@id": "https://adelineguillotgueret.fr",
       "telephone": "+590-6-XX-XX-XX-XX",
-      "email": "contact@adelineguillotgueret.fr",
+      "email": "adeline.gueret.g@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Guadeloupe",
@@ -525,7 +531,7 @@
       "description": "Cabinet spécialisé dans l'accompagnement des enfants à besoins particuliers en Guadeloupe",
       "url": "https://adelineguillotgueret.fr",
       "telephone": "+590-6-XX-XX-XX-XX",
-      "email": "contact@adelineguillotgueret.fr",
+      "email": "adeline.gueret.g@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Guadeloupe",
