@@ -14,7 +14,7 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(53, 124, 122, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     z-index: 999;
     border: none;
 }
@@ -28,6 +28,28 @@
     width: 30px;
     height: 30px;
     fill: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+}
+
+.chat-button .icon-message {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.chat-button .icon-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+.chat-button.active .icon-message {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+.chat-button.active .icon-close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 /* Conteneur du chatbot */

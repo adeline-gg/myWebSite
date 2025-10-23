@@ -173,8 +173,9 @@ function initChatbot() {
 
 // Ouvrir/Fermer le chat
 function toggleChat() {
-    if (chatContainer) {
+    if (chatContainer && chatButton) {
         chatContainer.classList.toggle('active');
+        chatButton.classList.toggle('active');
         if (chatContainer.classList.contains('active') && chatInput) {
             chatInput.focus();
         }
