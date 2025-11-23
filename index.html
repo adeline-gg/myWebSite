@@ -200,12 +200,11 @@
             <div class="service-card" data-service-index="0">
                 <div class="service-card-header">
                     <div class="service-card-title-area">
-                        <div class="service-icon">📘</div>
                         <h3>Soutien scolaire spécifique &amp; bilans scolaires</h3>
                     </div>
-                    <div class="service-toggle">▼</div>
                 </div>
                 <p class="service-teaser">Accompagnement individualisé pour enfants à besoins éducatifs particuliers. Évaluation et plan de soutien adapté.</p>
+                <div class="service-toggle">Voir plus</div>
                 <div class="service-content">
                     <div class="service-details">
                         <p><strong>Accompagnement individualisé</strong> pour enfants à besoins éducatifs particuliers.</p>
@@ -231,12 +230,11 @@
             <div class="service-card" data-service-index="1">
                 <div class="service-card-header">
                     <div class="service-card-title-area">
-                        <div class="service-icon">👨‍👩‍👧</div>
                         <h3>Guidance parentale</h3>
                     </div>
-                    <div class="service-toggle">▼</div>
                 </div>
                 <p class="service-teaser">Soutien aux parents pour mieux comprendre les besoins de leur enfant et disposer d'outils concrets pour l'aider.</p>
+                <div class="service-toggle">Voir plus</div>
                 <div class="service-content">
                     <div class="service-details">
                         <p>Soutien aux parents dans la compréhension des <strong>troubles du neurodéveloppement (TND)</strong> et des difficultés scolaires.</p>
@@ -257,12 +255,11 @@
             <div class="service-card" data-service-index="2">
                 <div class="service-card-header">
                     <div class="service-card-title-area">
-                        <div class="service-icon">👩‍🏫</div>
                         <h3>Formation &amp; supervision d'équipes</h3>
                     </div>
-                    <div class="service-toggle">▼</div>
                 </div>
                 <p class="service-teaser">Formations et accompagnement de la communauté éducative et des équipes médico-sociales pour favoriser l'inclusion scolaire.</p>
+                <div class="service-toggle">Voir plus</div>
                 <div class="service-content">
                     <div class="service-details">
                         <p>Mon parcours m'a permis de développer une expertise solide dans l'accompagnement des équipes éducatives et médico-sociales.</p>
@@ -282,12 +279,11 @@
             <div class="service-card" data-service-index="3">
                 <div class="service-card-header">
                     <div class="service-card-title-area">
-                        <div class="service-icon">🔎</div>
                         <h3>Analyse de pratiques professionnelles</h3>
                     </div>
-                    <div class="service-toggle">▼</div>
                 </div>
                 <p class="service-teaser">Accompagnement des équipes dans une démarche réflexive, collaborative et bienveillante.</p>
+                <div class="service-toggle">Voir plus</div>
                 <div class="service-content">
                     <div class="service-details">
                         <p>Formée à l'<strong>animation de groupes d'analyse de la pratique professionnelle</strong> par <strong>Epsilon Melia</strong>, j'accompagne les équipes dans une démarche réflexive, collaborative et bienveillante.</p>
@@ -304,6 +300,22 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal Service -->
+    <div id="serviceModal" class="service-modal">
+        <div class="service-modal-overlay"></div>
+        <div class="service-modal-content">
+            <button class="service-modal-close" aria-label="Fermer">&times;</button>
+            <div class="service-modal-header">
+                <div class="service-modal-icon"></div>
+                <h2 class="service-modal-title"></h2>
+            </div>
+            <div class="service-modal-body"></div>
+            <div class="service-modal-footer">
+                <a href="#contact" class="btn-primary service-modal-cta">Me contacter pour ce service</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Parcours d'accompagnement Section -->
     <section id="parcours" class="parcours">
@@ -628,6 +640,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/legal-modal.js"></script>
+    <script src="js/service-modal.js"></script>
     <script src="js/chatbot.js"></script>
     <script>
         // Smooth Scrolling - using event delegation for dynamically loaded links
