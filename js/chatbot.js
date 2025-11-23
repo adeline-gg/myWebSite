@@ -81,7 +81,7 @@ const knowledge = {
     },
     'services': {
         title: 'Mes services',
-        content: 'Je propose 4 types d\'accompagnement :<br>📘 <strong>Soutien scolaire spécifique & bilans</strong> (45€/h)<br>👨‍👩‍👧 <strong>Guidance parentale</strong> (55€/h)<br>👩‍🏫 <strong>Formation & supervision d\'équipes</strong><br>🔎 <strong>Analyse de pratiques professionnelles</strong><br><a href="#services" style="color: var(--primary); font-weight: 600;">Voir tous les services</a>'
+        content: 'Je propose 4 types d\'accompagnement :<br>📘 <strong>Soutien scolaire spécifique & bilans</strong> (45€/h)<br>👨‍👩‍👧 <strong>Guidance parentale</strong> (55€/h)<br>🌿 <strong>Parcours d\'accompagnement</strong> (forfaits 500€ à 3 400€)<br>👩‍🏫 <strong>Formation & supervision d\'équipes</strong><br>🔎 <strong>Analyse de pratiques professionnelles</strong><br><a href="#services" style="color: var(--primary); font-weight: 600;">Voir tous les services</a>'
     },
     'soutien scolaire': {
         title: 'Soutien scolaire spécifique',
@@ -89,7 +89,7 @@ const knowledge = {
     },
     'tarifs': {
         title: 'Tarifs',
-        content: '💰 <strong>Soutien scolaire :</strong> 45€/heure<br>💰 <strong>Évaluation complète :</strong> 250€<br>💰 <strong>Guidance parentale :</strong> 55€/heure<br>💰 <strong>Formation & supervision :</strong> Sur devis<br>💰 <strong>Analyse de pratiques :</strong> Sur devis<br><br>Exonération de TVA - Déduction fiscale possible. <a href="#tarifs" style="color: var(--primary); font-weight: 600;">Voir tous les tarifs</a>'
+        content: '💰 <strong>Soutien scolaire :</strong> 45€/heure<br>💰 <strong>Évaluation complète :</strong> 250€<br>💰 <strong>Guidance parentale :</strong> 55€/heure<br>🌿 <strong>Parcours d\'accompagnement :</strong> 500€ à 3 400€<br>💰 <strong>Formation & supervision :</strong> Sur devis<br>💰 <strong>Analyse de pratiques :</strong> Sur devis<br><br>Exonération de TVA - Déduction fiscale possible. <a href="#tarifs" style="color: var(--primary); font-weight: 600;">Voir tous les tarifs</a>'
     },
     'contact': {
         title: 'Me contacter',
@@ -122,6 +122,34 @@ const knowledge = {
     'evaluation': {
         title: 'Évaluation scolaire complète',
         content: 'L\'évaluation complète comprend : une anamnèse, la passation de tests adaptés, l\'analyse des résultats, un rapport écrit détaillé et une restitution aux parents avec recommandations.<br><strong>Tarif :</strong> 250€ (forfait)<br><a href="#services" style="color: var(--primary); font-weight: 600;">En savoir plus</a>'
+    },
+    'parcours': {
+        title: '🌿 Parcours d\'accompagnement',
+        content: 'Je propose 4 parcours incluant soutien scolaire + guidance parentale pour enfants TND (TSA, TDAH, troubles DYS) :<br><br>🟢 <strong>Découverte</strong> (500€) : 10 séances enfant + 2 guidance<br>🔵 <strong>Approfondissement</strong> (985€) : 20 séances enfant + 4 guidance<br>🟣 <strong>Consolidation</strong> (1 810€) : 40 séances enfant + 6 guidance<br>🟡 <strong>Équilibre - année scolaire</strong> (3 400€) : 80 séances enfant + 8 guidance<br><br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'pack': {
+        title: '🌿 Parcours d\'accompagnement',
+        content: 'Je propose 4 parcours incluant soutien scolaire + guidance parentale pour enfants TND (TSA, TDAH, troubles DYS) :<br><br>🟢 <strong>Découverte</strong> (500€) : 10 séances enfant + 2 guidance<br>🔵 <strong>Approfondissement</strong> (985€) : 20 séances enfant + 4 guidance<br>🟣 <strong>Consolidation</strong> (1 810€) : 40 séances enfant + 6 guidance<br>🟡 <strong>Équilibre - année scolaire</strong> (3 400€) : 80 séances enfant + 8 guidance<br><br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'forfait': {
+        title: '🌿 Parcours d\'accompagnement',
+        content: 'Je propose 4 parcours incluant soutien scolaire + guidance parentale pour enfants TND (TSA, TDAH, troubles DYS) :<br><br>🟢 <strong>Découverte</strong> (500€) : 10 séances enfant + 2 guidance<br>🔵 <strong>Approfondissement</strong> (985€) : 20 séances enfant + 4 guidance<br>🟣 <strong>Consolidation</strong> (1 810€) : 40 séances enfant + 6 guidance<br>🟡 <strong>Équilibre - année scolaire</strong> (3 400€) : 80 séances enfant + 8 guidance<br><br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'parcours decouverte': {
+        title: '🟢 Parcours Découverte',
+        content: 'Idéal pour débuter un accompagnement :<br>• 10 séances d\'accompagnement enfant (1h)<br>• 2 séances de guidance parentale (1h)<br><strong>Tarif :</strong> 500€ (valeur réelle : 560€)<br><br>Progression structurée et suivi régulier adapté aux besoins de l\'enfant et de la famille.<br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'parcours approfondissement': {
+        title: '🔵 Parcours Approfondissement',
+        content: 'Pour un travail dans la continuité :<br>• 20 séances d\'accompagnement enfant (1h)<br>• 4 séances de guidance parentale (1h)<br><strong>Tarif :</strong> 985€ (valeur réelle : 1 120€)<br><br>Accompagnement approfondi avec un suivi régulier sur plusieurs mois.<br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'parcours consolidation': {
+        title: '🟣 Parcours Consolidation',
+        content: 'Pour un accompagnement approfondi :<br>• 40 séances d\'accompagnement enfant (1h)<br>• 6 séances de guidance parentale (1h)<br><strong>Tarif :</strong> 1 810€ (valeur réelle : 2 130€)<br><br>Accompagnement intensif pour consolider les acquis et ancrer les progrès.<br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
+    },
+    'parcours equilibre': {
+        title: '🟡 Parcours Équilibre - Année scolaire',
+        content: '✨ Offre signature - Accompagnement régulier sur la durée :<br>• 80 séances d\'accompagnement enfant (environ 2h/semaine sur 40 semaines)<br>• 8 séances de guidance parentale (réparties sur l\'année)<br><strong>Tarif :</strong> 3 400€ (valeur réelle : 4 040€)<br>Soit environ 85€/semaine ou 340€/mois sur 10 mois<br><br>Le parcours idéal pour un suivi complet sur toute l\'année scolaire.<br><a href="#parcours" style="color: var(--primary); font-weight: 600;">Voir tous les parcours</a>'
     }
 };
 
@@ -248,7 +276,6 @@ function findAnswer(question) {
         'telephone': 'contact',
         'diplome': 'qualifications',
         'certification': 'qualifications',
-        'parcours': 'qui etes-vous',
         'bilan': 'evaluation',
         'test': 'evaluation',
         'evaluer': 'evaluation',
@@ -260,7 +287,19 @@ function findAnswer(question) {
         'enseignante': 'adeline',
         'specialise': 'adeline',
         'propose': 'services',
-        'offre': 'services'
+        'offre': 'services',
+        // Mots-clés parcours
+        'parcours': 'parcours',
+        'pack': 'pack',
+        'forfait': 'forfait',
+        'package': 'parcours',
+        'formule': 'parcours',
+        'decouverte': 'parcours decouverte',
+        'approfondissement': 'parcours approfondissement',
+        'consolidation': 'parcours consolidation',
+        'equilibre': 'parcours equilibre',
+        'annee scolaire': 'parcours equilibre',
+        'long terme': 'parcours equilibre'
     };
 
     for (const [keyword, knowledgeKey] of Object.entries(keywords)) {
