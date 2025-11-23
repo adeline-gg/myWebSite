@@ -14,8 +14,8 @@
     --text-light: #718096;
     --bg-light: #FAF7F2;
     --bg-white: #FFFFFF;
-    --shadow: 0 4px 12px rgba(0,0,0,0.04);
-    --shadow-lg: 0 8px 20px rgba(0,0,0,0.06);
+    --shadow: 0 1px 3px rgba(0,0,0,0.01);
+    --shadow-lg: 0 2px 6px rgba(0,0,0,0.015);
 }
 
 body {
@@ -33,7 +33,7 @@ nav {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.01);
     transition: all 0.3s ease;
 }
 
@@ -94,12 +94,12 @@ nav {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(53, 124, 122, 0.15);
+    box-shadow: 0 1px 4px rgba(53, 124, 122, 0.08);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 3px 12px rgba(53, 124, 122, 0.2);
+    box-shadow: 0 2px 6px rgba(53, 124, 122, 0.12);
 }
 
 /* Hero Section */
@@ -183,12 +183,12 @@ nav {
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 2px 8px rgba(53, 124, 122, 0.15);
+    box-shadow: 0 1px 4px rgba(53, 124, 122, 0.08);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(53, 124, 122, 0.2);
+    box-shadow: 0 2px 8px rgba(53, 124, 122, 0.12);
 }
 
 .btn-secondary {
@@ -207,7 +207,7 @@ nav {
     background: var(--primary);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(53, 124, 122, 0.15);
+    box-shadow: 0 2px 6px rgba(53, 124, 122, 0.08);
 }
 
 .hero-image {
@@ -274,19 +274,21 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    align-items: start;
+    align-items: stretch;
 }
 
 .service-card {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     cursor: pointer;
-    height: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card::before {
@@ -307,7 +309,7 @@ nav {
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .service-card-header {
@@ -315,6 +317,7 @@ nav {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 .service-card-title-area {
@@ -325,35 +328,47 @@ nav {
     color: var(--text-light);
     margin-bottom: 1rem;
     line-height: 1.6;
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 
 .service-toggle {
-    font-size: 1.5rem;
-    color: var(--primary);
-    transition: transform 0.3s ease;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
     flex-shrink: 0;
-    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-end;
+    margin-top: auto;
 }
 
-.service-card.active .service-toggle {
-    transform: rotate(180deg);
+.service-toggle::after {
+    content: '→';
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-toggle {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(53, 124, 122, 0.15);
+}
+
+.service-card:hover .service-toggle::after {
+    transform: translateX(3px);
 }
 
 .service-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-}
-
-.service-card.active .service-content {
-    max-height: 2000px;
-    transition: max-height 0.6s ease-in;
+    display: none;
 }
 
 .service-details {
     padding-top: 1rem;
-    border-top: 2px solid var(--bg-light);
-    margin-top: 1rem;
 }
 
 .service-price {
@@ -367,19 +382,6 @@ nav {
     margin-top: 1rem;
 }
 
-.service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    color: white;
-}
-
 .service-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
@@ -389,6 +391,226 @@ nav {
 .service-card p {
     color: var(--text-light);
     line-height: 1.8;
+}
+
+/* Service Modal */
+.service-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+}
+
+.service-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-modal.active .service-modal-overlay {
+    animation: fadeIn 0.3s ease;
+}
+
+.service-modal.active .service-modal-content {
+    animation: slideUp 0.4s ease;
+}
+
+.service-modal.closing .service-modal-overlay {
+    animation: fadeOut 0.25s ease-out;
+}
+
+.service-modal.closing .service-modal-content {
+    animation: slideDown 0.25s ease-out;
+}
+
+.service-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.service-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 10001;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}
+
+.service-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--bg-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.service-modal-close:hover {
+    background: var(--primary);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.service-modal-header {
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom: 2px solid var(--bg-light);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.service-modal-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.service-modal-title {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.service-modal-body {
+    padding: 2rem;
+    line-height: 1.8;
+}
+
+.service-modal-body h4 {
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.service-modal-body ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.service-modal-body li {
+    margin-bottom: 0.75rem;
+}
+
+.service-modal-body p {
+    margin-bottom: 1rem;
+}
+
+.service-modal-body .service-price {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--bg-light), rgba(159, 211, 192, 0.1));
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+}
+
+.service-modal-footer {
+    padding: 1.5rem 2rem 2rem 2rem;
+    border-top: 2px solid var(--bg-light);
+    text-align: center;
+    background: var(--bg-light);
+    border-radius: 0 0 20px 20px;
+}
+
+.service-modal-cta {
+    display: inline-block;
+    width: auto;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    .service-modal-content {
+        width: 95%;
+        max-height: 95vh;
+        border-radius: 15px;
+    }
+
+    .service-modal-header {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-modal-icon {
+        font-size: 2.5rem;
+    }
+
+    .service-modal-title {
+        font-size: 1.4rem;
+    }
+
+    .service-modal-body {
+        padding: 1.5rem;
+    }
+
+    .service-modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
 }
 
 /* Pricing Section */
@@ -509,7 +731,7 @@ nav {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -536,7 +758,7 @@ nav {
 
 .parcours-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
 }
 
 /* Couleurs spécifiques par parcours */
@@ -692,13 +914,13 @@ nav {
     font-weight: 700;
     font-size: 0.9rem;
     transform: rotate(45deg);
-    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2);
+    box-shadow: 0 1px 4px rgba(255, 193, 7, 0.1);
     z-index: 10;
 }
 
 .parcours-signature:hover {
     border-color: rgba(255, 193, 7, 0.6);
-    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.08);
 }
 
 .parcours-signature .parcours-price {
@@ -716,7 +938,7 @@ nav {
     border-radius: 20px;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
 }
 
 .parcours-cta p {
@@ -908,7 +1130,7 @@ nav {
 
 .partner-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     background: white;
 }
 
@@ -922,7 +1144,7 @@ nav {
     border-radius: 10px;
     overflow: hidden;
     background: white;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .partner-logo img {
@@ -992,7 +1214,7 @@ nav {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
     position: relative;
     transition: all 0.3s ease;
 }
@@ -1325,7 +1547,7 @@ footer {
     max-width: 900px;
     width: 100%;
     margin: 2rem auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     animation: slideDown 0.4s ease;
     position: relative;
 }
