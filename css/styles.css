@@ -1583,6 +1583,16 @@ footer {
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    margin: -0.5rem;
+}
+
+.mobile-menu-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
 }
 
 .mobile-menu-toggle span {

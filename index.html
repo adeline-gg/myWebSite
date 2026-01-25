@@ -60,7 +60,7 @@
             <a href="#accueil" class="logo">
                 <img src="assets/images/logo.png" alt="Adeline Guillot Gueret - Accompagnement & formation en neurodéveloppement">
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#expertise">Expertise</a></li>
                 <li><a href="#qui-suis-je">Qui suis-je</a></li>
@@ -70,11 +70,11 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="cta-button">Me contacter</a>
-            <div class="mobile-menu-toggle">
+            <button class="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -752,6 +752,8 @@
         // Function to close mobile menu
         function closeMobileMenu() {
             navLinks.classList.remove('active');
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
             const spans = mobileMenuToggle.querySelectorAll('span');
             spans[0].style.transform = '';
             spans[1].style.opacity = '1';
@@ -761,12 +763,17 @@
         // Toggle mobile menu
         mobileMenuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+
+            // Update ARIA attributes
+            this.setAttribute('aria-expanded', isExpanded);
+            this.setAttribute('aria-label', isExpanded ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
 
             // Animate hamburger menu
             const spans = this.querySelectorAll('span');
-            spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translateY(8px)' : '';
-            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translateY(-8px)' : '';
+            spans[0].style.transform = isExpanded ? 'rotate(45deg) translateY(8px)' : '';
+            spans[1].style.opacity = isExpanded ? '0' : '1';
+            spans[2].style.transform = isExpanded ? 'rotate(-45deg) translateY(-8px)' : '';
         });
 
         // Close mobile menu when clicking on a navigation link
