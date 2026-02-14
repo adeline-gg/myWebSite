@@ -51,5 +51,5 @@ test-results/
 .cache/
 .parcel-cache/
 
-#claude
-.claude/settings.local.json
+# Claude
+.claude/
