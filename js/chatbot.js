@@ -212,7 +212,9 @@ function toggleChat() {
     if (chatContainer && chatButton) {
         chatContainer.classList.toggle('active');
         chatButton.classList.toggle('active');
-        if (chatContainer.classList.contains('active') && chatInput) {
+        const isOpen = chatContainer.classList.contains('active');
+        chatButton.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen && chatInput) {
             chatInput.focus();
         }
     }
