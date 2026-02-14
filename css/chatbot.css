@@ -14,8 +14,8 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(53, 124, 122, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    z-index: 999;
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    z-index: var(--z-chatbot);
     border: none;
 }
 
@@ -24,11 +24,16 @@
     box-shadow: 0 6px 25px rgba(53, 124, 122, 0.4);
 }
 
+.chat-button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring), 0 4px 15px rgba(53, 124, 122, 0.3);
+}
+
 .chat-button svg {
     width: 30px;
     height: 30px;
     fill: white;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform var(--transition-slow), opacity var(--transition-slow);
     position: absolute;
 }
 
@@ -66,7 +71,7 @@
     display: none;
     flex-direction: column;
     overflow: hidden;
-    z-index: 999;
+    z-index: var(--z-chatbot);
     animation: slideUp 0.3s ease;
 }
 
@@ -118,11 +123,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s;
+    transition: background var(--transition-slow);
 }
 
 .close-btn:hover {
     background: rgba(255, 255, 255, 0.3);
+}
+
+.close-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 /* Zone de messages */
@@ -234,13 +244,19 @@
     border-radius: 20px;
     font-size: 13px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background var(--transition-slow), color var(--transition-slow), border-color var(--transition-slow);
     color: var(--text-dark);
 }
 
 .quick-reply-btn:hover {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: white;
+    border-color: var(--primary);
+}
+
+.quick-reply-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
     border-color: var(--primary);
 }
 
@@ -260,7 +276,7 @@
     border-radius: 25px;
     font-size: 14px;
     outline: none;
-    transition: all 0.3s ease;
+    transition: border-color var(--transition-slow), box-shadow var(--transition-slow), background var(--transition-slow);
     background: var(--bg-light);
     font-family: inherit;
 }
@@ -282,7 +298,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
     flex-shrink: 0;
 }
 
@@ -291,9 +307,16 @@
     box-shadow: 0 4px 15px rgba(53, 124, 122, 0.3);
 }
 
+.send-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring), 0 4px 15px rgba(53, 124, 122, 0.3);
+}
+
 .send-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Scrollbar personnalisée */

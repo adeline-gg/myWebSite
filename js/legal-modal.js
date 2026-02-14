@@ -79,7 +79,7 @@ function convertMarkdownToHtml(markdown) {
 document.addEventListener('DOMContentLoaded', () => {
     // Create modal HTML structure
     const modalHTML = `
-        <div id="legal-modal" class="legal-modal">
+        <div id="legal-modal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
             <div class="legal-modal-content">
                 <div class="legal-modal-header">
                     <h2 id="legal-modal-title">Mentions Légales</h2>
@@ -97,18 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modal = document.getElementById('legal-modal');
     const modalBody = document.getElementById('legal-modal-body');
+    const modalContent = modal.querySelector('.legal-modal-content');
     const closeBtn = document.querySelector('.legal-modal-close');
+    let triggerElement = null;
 
     /**
      * Open modal and load content from a markdown file
      */
     const openModal = async (mdFilePath, title = 'Mentions Légales') => {
+        // Sauvegarder l'élément déclencheur pour restaurer le focus
+        triggerElement = document.activeElement;
+
         // Set title
         document.getElementById('legal-modal-title').textContent = title;
 
         // Show modal
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+
+        // Focus sur le bouton de fermeture
+        setTimeout(() => closeBtn?.focus(), 100);
 
         // Load markdown content
         try {
@@ -131,6 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = () => {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+
+        // Restaurer le focus sur l'élément déclencheur
+        if (triggerElement) {
+            triggerElement.focus();
+            triggerElement = null;
+        }
     };
 
     // Close button click
@@ -143,10 +157,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Escape key to close
+    // Escape key to close + focus trap
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
+        if (!modal.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
             closeModal();
+            return;
+        }
+
+        // Focus trap
+        if (e.key === 'Tab') {
+            const focusable = modalContent.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         }
     });
 

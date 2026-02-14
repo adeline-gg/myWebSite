@@ -13,6 +13,7 @@
 
     // Données des services
     const servicesData = [];
+    let triggerElement = null;
 
     // Fonction d'initialisation
     function init() {
@@ -28,10 +29,35 @@
         modalClose?.addEventListener('click', closeModal);
         modalOverlay?.addEventListener('click', closeModal);
 
-        // Fermeture avec la touche Échap
+        // Fermeture avec Échap + piège de focus
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
+            if (!modal.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
                 closeModal();
+                return;
+            }
+
+            // Focus trap
+            if (e.key === 'Tab') {
+                const focusable = modalContent.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
             }
         });
 
@@ -80,6 +106,9 @@
         const service = servicesData[serviceIndex];
         if (!service) return;
 
+        // Sauvegarder l'élément déclencheur pour restaurer le focus
+        triggerElement = document.activeElement;
+
         // Remplir le modal avec les données
         if (modalIcon) modalIcon.textContent = service.icon;
         if (modalTitle) modalTitle.textContent = service.title;
@@ -103,6 +132,12 @@
             modal.classList.remove('active');
             modal.classList.remove('closing');
             document.body.classList.remove('modal-open');
+
+            // Restaurer le focus sur l'élément déclencheur
+            if (triggerElement) {
+                triggerElement.focus();
+                triggerElement = null;
+            }
         }, 250);
     }
 

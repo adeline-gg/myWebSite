@@ -41,11 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
+     * Pause les animations en boucle quand leur section est hors écran
+     */
+    const initAnimationPausing = () => {
+        if (!('IntersectionObserver' in window)) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('animation-paused', !entry.isIntersecting);
+            });
+        }, { threshold: 0 });
+
+        document.querySelectorAll('.hero, .parcours').forEach(section => {
+            observer.observe(section);
+        });
+    };
+
+    /**
      * Initialisation de l'application
      */
     const init = () => {
         initServiceAccordions();
         updateCurrentYear();
+        initAnimationPausing();
         console.log('✅ Application initialisée (mode SEO statique)');
     };
 
