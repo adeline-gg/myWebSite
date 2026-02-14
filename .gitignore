@@ -53,3 +53,6 @@ test-results/
 
 # Claude
 .claude/
+
+# Playwright MCP
+.playwright-mcp/
