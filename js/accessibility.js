@@ -186,7 +186,7 @@
         Object.entries(FEATURES).forEach(([id, f]) => {
             const val = localStorage.getItem(f.key);
             if (f.type === 'step') {
-                state[id] = val ? parseInt(val, 10) : 0; // index into steps array
+                state[id] = val ? parseInt(val, 10) : 0;
             } else {
                 state[id] = val === '1';
             }
@@ -211,11 +211,9 @@
     function applyFeature(id) {
         const f = FEATURES[id];
         if (f.type === 'step') {
-            // Remove all step classes
             f.steps.forEach(s => {
                 if (s) html.classList.remove(f.classPrefix + s);
             });
-            // Add current step class
             const current = f.steps[state[id]];
             if (current) html.classList.add(f.classPrefix + current);
         } else {
@@ -269,9 +267,19 @@
         }
     }
 
-    function onMaskMouseMove(e) { updateMaskPosition(e.clientY); }
+    let maskRafPending = false;
+    function scheduleMaskUpdate(y) {
+        if (maskRafPending) return;
+        maskRafPending = true;
+        requestAnimationFrame(() => {
+            updateMaskPosition(y);
+            maskRafPending = false;
+        });
+    }
+
+    function onMaskMouseMove(e) { scheduleMaskUpdate(e.clientY); }
     function onMaskTouchMove(e) {
-        if (e.touches.length > 0) updateMaskPosition(e.touches[0].clientY);
+        if (e.touches.length > 0) scheduleMaskUpdate(e.touches[0].clientY);
     }
 
     /* -------------------------------------------------------
@@ -409,14 +417,10 @@
         const label = createEl('span', { className: 'a11y-feature-label' }, [f.label]);
         btn.appendChild(label);
 
-        // Step dots for multi-step features
         if (f.type === 'step') {
             const dotsContainer = createEl('div', { className: 'a11y-step-dots' });
-            f.steps.forEach((_, i) => {
-                const dot = createEl('span', {
-                    className: 'a11y-step-dot' + (i <= state[id] && i > 0 ? ' active' : (i === 0 && state[id] === 0 ? '' : '')),
-                });
-                dotsContainer.appendChild(dot);
+            f.steps.forEach(() => {
+                dotsContainer.appendChild(createEl('span', { className: 'a11y-step-dot' }));
             });
             updateStepDots(dotsContainer, f, state[id]);
             btn.appendChild(dotsContainer);
@@ -454,6 +458,7 @@
        ------------------------------------------------------- */
 
     let previousFocus = null;
+    let panelFocusable = [];
 
     function openPanel() {
         if (panelOpen) return;
@@ -464,9 +469,8 @@
         panelEl.classList.add('active');
         toggleBtnEl.setAttribute('aria-expanded', 'true');
 
-        // Focus first interactive element
-        const first = panelEl.querySelector('button');
-        if (first) first.focus();
+        panelFocusable = Array.from(panelEl.querySelectorAll('button'));
+        if (panelFocusable.length) panelFocusable[0].focus();
 
         document.addEventListener('keydown', onPanelKeydown);
     }
@@ -490,12 +494,10 @@
             return;
         }
 
-        // Focus trap
         if (e.key === 'Tab') {
-            const focusable = panelEl.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
-            if (focusable.length === 0) return;
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
+            if (panelFocusable.length === 0) return;
+            const first = panelFocusable[0];
+            const last = panelFocusable[panelFocusable.length - 1];
 
             if (e.shiftKey && document.activeElement === first) {
                 e.preventDefault();

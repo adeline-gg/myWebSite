@@ -11,9 +11,9 @@
     --a11y-active: var(--primary, #357C7A);
     --a11y-hover: #F5F5F5;
     --a11y-panel-width: 320px;
-    --a11y-z-button: 35;
-    --a11y-z-overlay: 55;
-    --a11y-z-panel: 56;
+    --a11y-z-button: var(--z-fixed, 35);
+    --a11y-z-overlay: calc(var(--z-modal, 50) + 5);
+    --a11y-z-panel: calc(var(--z-modal, 50) + 6);
 }
 
 /* --- Floating Button --- */
@@ -449,17 +449,13 @@ html.a11y-highlight-links a:visited:not(.a11y-widget a) {
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 9998;
+    z-index: var(--a11y-z-overlay, 55);
     pointer-events: none;
     transition: none;
 }
 
 .a11y-reading-mask-top {
     top: 0;
-}
-
-.a11y-reading-mask-bottom {
-    bottom: 0;
 }
 
 /* --- 11. Focus Outline --- */

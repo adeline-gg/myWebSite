@@ -58,7 +58,7 @@
             'a11y-line-height':{p:'a11y-line-height-',s:['130','160']}
         },t=['a11y-align-left','a11y-readable-font','a11y-high-contrast','a11y-grayscale',
              'a11y-hide-images','a11y-pause-animations','a11y-highlight-links',
-             'a11y-reading-mask','a11y-focus-outline','a11y-show-structure'];
+             'a11y-focus-outline','a11y-show-structure'];
         Object.entries(m).forEach(function(e){var v=localStorage.getItem(e[0]);
             if(v&&e[1].s.indexOf(v)!==-1)h.classList.add(e[1].p+v);});
         t.forEach(function(k){if(localStorage.getItem(k)==='1')h.classList.add(k);});
