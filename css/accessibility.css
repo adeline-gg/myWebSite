@@ -287,3 +287,210 @@
 .a11y-widget .a11y-icon {
     visibility: visible !important;
 }
+
+/* ============================================
+   Feature Overrides — applied on <html>
+   ============================================ */
+
+/* --- 1. Font Scale --- */
+html.a11y-font-scale-125 { --a11y-font-scale: 1.25; }
+html.a11y-font-scale-150 { --a11y-font-scale: 1.5; }
+html.a11y-font-scale-175 { --a11y-font-scale: 1.75; }
+
+html[class*="a11y-font-scale-"] body {
+    font-size: calc(1rem * var(--a11y-font-scale)) !important;
+}
+
+html[class*="a11y-font-scale-"] h1 { font-size: calc(2.5rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h2 { font-size: calc(2rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h3 { font-size: calc(1.5rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h4 { font-size: calc(1.25rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] p,
+html[class*="a11y-font-scale-"] li,
+html[class*="a11y-font-scale-"] span,
+html[class*="a11y-font-scale-"] a,
+html[class*="a11y-font-scale-"] label,
+html[class*="a11y-font-scale-"] input,
+html[class*="a11y-font-scale-"] textarea,
+html[class*="a11y-font-scale-"] button:not(.a11y-feature-btn):not(.a11y-header-btn):not(.a11y-toggle-btn) {
+    font-size: calc(1rem * var(--a11y-font-scale)) !important;
+}
+
+/* --- 2. Line Height --- */
+html.a11y-line-height-130 { --a11y-line-height-scale: 1.3; }
+html.a11y-line-height-160 { --a11y-line-height-scale: 1.6; }
+
+html[class*="a11y-line-height-"] body,
+html[class*="a11y-line-height-"] p,
+html[class*="a11y-line-height-"] li,
+html[class*="a11y-line-height-"] span,
+html[class*="a11y-line-height-"] h1,
+html[class*="a11y-line-height-"] h2,
+html[class*="a11y-line-height-"] h3,
+html[class*="a11y-line-height-"] h4 {
+    line-height: calc(1.6 * var(--a11y-line-height-scale)) !important;
+}
+
+/* --- 3. Align Left --- */
+html.a11y-align-left body *:not(.a11y-widget):not(.a11y-widget *) {
+    text-align: left !important;
+}
+
+/* --- 4. Readable Font --- */
+html.a11y-readable-font body *:not(.a11y-widget):not(.a11y-widget *) {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-style: normal !important;
+}
+
+html.a11y-readable-font body *:not(.a11y-widget):not(.a11y-widget *) b,
+html.a11y-readable-font body *:not(.a11y-widget):not(.a11y-widget *) strong {
+    font-weight: 700 !important;
+}
+
+/* --- 5. High Contrast --- */
+html.a11y-high-contrast body:not(.a11y-widget) {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+html.a11y-high-contrast *:not(.a11y-widget):not(.a11y-widget *) {
+    color: #000000 !important;
+    border-color: #000000 !important;
+    background-image: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html.a11y-high-contrast a:not(.a11y-widget a) {
+    color: #0000EE !important;
+    text-decoration: underline !important;
+}
+
+html.a11y-high-contrast button:not(.a11y-widget button),
+html.a11y-high-contrast .cta-button,
+html.a11y-high-contrast input[type="submit"] {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+html.a11y-high-contrast nav {
+    background: #FFFFFF !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+html.a11y-high-contrast img:not(.a11y-widget img) {
+    filter: contrast(1.5) !important;
+}
+
+/* --- 6. Grayscale --- */
+html.a11y-grayscale {
+    filter: grayscale(1);
+}
+
+/* Protect the widget from grayscale */
+html.a11y-grayscale .a11y-widget {
+    filter: grayscale(0);
+}
+
+/* --- 7. Hide Images --- */
+html.a11y-hide-images img:not(.a11y-widget img):not(.a11y-icon),
+html.a11y-hide-images svg:not(.a11y-widget svg):not(.a11y-icon),
+html.a11y-hide-images picture:not(.a11y-widget picture),
+html.a11y-hide-images [role="img"]:not(.a11y-widget [role="img"]) {
+    visibility: hidden !important;
+}
+
+html.a11y-hide-images *:not(.a11y-widget):not(.a11y-widget *) {
+    background-image: none !important;
+}
+
+/* --- 8. Pause Animations --- */
+html.a11y-pause-animations *:not(.a11y-widget):not(.a11y-widget *),
+html.a11y-pause-animations *:not(.a11y-widget):not(.a11y-widget *)::before,
+html.a11y-pause-animations *:not(.a11y-widget):not(.a11y-widget *)::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+html.a11y-pause-animations {
+    scroll-behavior: auto !important;
+}
+
+/* --- 9. Highlight Links --- */
+html.a11y-highlight-links a:not(.a11y-widget a) {
+    text-decoration: underline 3px #0000EE !important;
+    color: #0000EE !important;
+    background: rgba(0, 0, 238, 0.05) !important;
+    border-radius: 2px;
+    padding: 1px 2px;
+}
+
+html.a11y-highlight-links a:visited:not(.a11y-widget a) {
+    color: #551A8B !important;
+    text-decoration-color: #551A8B !important;
+}
+
+/* --- 10. Reading Mask --- */
+.a11y-reading-mask-overlay {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    pointer-events: none;
+    transition: none;
+}
+
+.a11y-reading-mask-top {
+    top: 0;
+}
+
+.a11y-reading-mask-bottom {
+    bottom: 0;
+}
+
+/* --- 11. Focus Outline --- */
+html.a11y-focus-outline *:focus-visible {
+    outline: 3px solid var(--primary, #357C7A) !important;
+    outline-offset: 2px !important;
+}
+
+/* --- 12. Show Structure --- */
+html.a11y-show-structure h1::before,
+html.a11y-show-structure h2::before,
+html.a11y-show-structure h3::before,
+html.a11y-show-structure h4::before,
+html.a11y-show-structure h5::before,
+html.a11y-show-structure h6::before {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #E53E3E;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+html.a11y-show-structure h1::before { content: "H1"; }
+html.a11y-show-structure h2::before { content: "H2"; }
+html.a11y-show-structure h3::before { content: "H3"; }
+html.a11y-show-structure h4::before { content: "H4"; }
+html.a11y-show-structure h5::before { content: "H5"; }
+html.a11y-show-structure h6::before { content: "H6"; }
+
+html.a11y-show-structure nav,
+html.a11y-show-structure main,
+html.a11y-show-structure section,
+html.a11y-show-structure footer {
+    outline: 2px dashed #E53E3E !important;
+    outline-offset: 2px;
+}
+
+/* Do not show structure badges inside the widget */
+html.a11y-show-structure .a11y-widget h2::before {
+    display: none;
+}
