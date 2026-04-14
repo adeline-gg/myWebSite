@@ -400,15 +400,21 @@ html.a11y-grayscale .a11y-widget {
 }
 
 /* --- 7. Hide Images --- */
-html.a11y-hide-images img:not(.a11y-widget img):not(.a11y-icon),
-html.a11y-hide-images svg:not(.a11y-widget svg):not(.a11y-icon),
+/* Hide content images but keep functional icons (inside links, buttons, nav) visible */
+html.a11y-hide-images img:not(.a11y-widget img):not(.a11y-icon):not(a img):not(button img):not(nav img),
 html.a11y-hide-images picture:not(.a11y-widget picture),
 html.a11y-hide-images [role="img"]:not(.a11y-widget [role="img"]) {
     visibility: hidden !important;
 }
 
-html.a11y-hide-images *:not(.a11y-widget):not(.a11y-widget *) {
-    background-image: none !important;
+/* Keep SVGs inside interactive elements visible — only hide standalone decorative SVGs */
+html.a11y-hide-images svg:not(.a11y-widget svg):not(.a11y-icon):not(a svg):not(button svg):not(nav svg) {
+    visibility: hidden !important;
+}
+
+/* Ensure logo in nav stays visible */
+html.a11y-hide-images nav img {
+    visibility: visible !important;
 }
 
 /* --- 8. Pause Animations --- */
