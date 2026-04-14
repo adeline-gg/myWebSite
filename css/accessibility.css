@@ -105,7 +105,13 @@
 
 @media (max-width: 768px) {
     .a11y-panel {
-        width: 100vw;
+        width: 100%;
+        right: auto;
+        left: 0;
+        transform: translateX(100%);
+    }
+    .a11y-panel.active {
+        transform: translateX(0);
     }
 }
 
@@ -301,18 +307,18 @@ html[class*="a11y-font-scale-"] body {
     font-size: calc(1rem * var(--a11y-font-scale)) !important;
 }
 
-html[class*="a11y-font-scale-"] h1 { font-size: calc(2.5rem * var(--a11y-font-scale)) !important; }
-html[class*="a11y-font-scale-"] h2 { font-size: calc(2rem * var(--a11y-font-scale)) !important; }
-html[class*="a11y-font-scale-"] h3 { font-size: calc(1.5rem * var(--a11y-font-scale)) !important; }
-html[class*="a11y-font-scale-"] h4 { font-size: calc(1.25rem * var(--a11y-font-scale)) !important; }
-html[class*="a11y-font-scale-"] p,
-html[class*="a11y-font-scale-"] li,
-html[class*="a11y-font-scale-"] span,
-html[class*="a11y-font-scale-"] a,
-html[class*="a11y-font-scale-"] label,
-html[class*="a11y-font-scale-"] input,
-html[class*="a11y-font-scale-"] textarea,
-html[class*="a11y-font-scale-"] button:not(.a11y-feature-btn):not(.a11y-header-btn):not(.a11y-toggle-btn) {
+html[class*="a11y-font-scale-"] h1:not(.a11y-widget *) { font-size: calc(2.5rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h2:not(.a11y-widget *) { font-size: calc(2rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h3:not(.a11y-widget *) { font-size: calc(1.5rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] h4:not(.a11y-widget *) { font-size: calc(1.25rem * var(--a11y-font-scale)) !important; }
+html[class*="a11y-font-scale-"] p:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] li:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] span:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] a:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] label:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] input:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] textarea:not(.a11y-widget *),
+html[class*="a11y-font-scale-"] button:not(.a11y-widget *):not(.a11y-feature-btn):not(.a11y-header-btn):not(.a11y-toggle-btn) {
     font-size: calc(1rem * var(--a11y-font-scale)) !important;
 }
 
@@ -321,13 +327,13 @@ html.a11y-line-height-130 { --a11y-line-height-scale: 1.3; }
 html.a11y-line-height-160 { --a11y-line-height-scale: 1.6; }
 
 html[class*="a11y-line-height-"] body,
-html[class*="a11y-line-height-"] p,
-html[class*="a11y-line-height-"] li,
-html[class*="a11y-line-height-"] span,
-html[class*="a11y-line-height-"] h1,
-html[class*="a11y-line-height-"] h2,
-html[class*="a11y-line-height-"] h3,
-html[class*="a11y-line-height-"] h4 {
+html[class*="a11y-line-height-"] p:not(.a11y-widget *),
+html[class*="a11y-line-height-"] li:not(.a11y-widget *),
+html[class*="a11y-line-height-"] span:not(.a11y-widget *),
+html[class*="a11y-line-height-"] h1:not(.a11y-widget *),
+html[class*="a11y-line-height-"] h2:not(.a11y-widget *),
+html[class*="a11y-line-height-"] h3:not(.a11y-widget *),
+html[class*="a11y-line-height-"] h4:not(.a11y-widget *) {
     line-height: calc(1.6 * var(--a11y-line-height-scale)) !important;
 }
 
