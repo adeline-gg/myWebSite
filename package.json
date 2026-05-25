@@ -5,13 +5,14 @@
   "main": "js/app.js",
   "scripts": {
     "dev": "npx http-server -p ${PORT:-8080} --cors -c-1 --brotli",
-    "build": "npm run minify:css && npm run minify:js",
+    "prices": "node scripts/generate-prices.mjs",
+    "build": "npm run prices && npm run minify:css && npm run minify:js",
     "minify:css": "echo 'CSS minification - à implémenter avec cssnano'",
     "minify:js": "echo 'JS minification - à implémenter avec terser'",
     "docker:build": "docker build -t xgueret/adeline-gueret-site:latest .",
     "docker:run": "docker run -p 8080:80 xgueret/adeline-gueret-site:latest",
     "k8s:deploy": "helm upgrade --install adeline-gueret ./k8s/helm/adeline-gueret-site",
-    "test": "echo 'Tests à implémenter avec Playwright/Cypress'",
+    "test": "node --test scripts/*.test.mjs",
     "lint": "echo 'Linting à implémenter avec ESLint'"
   },
   "keywords": [
