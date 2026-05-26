@@ -21,6 +21,8 @@
     --shadow-xl: 0 16px 40px rgba(45, 55, 72, 0.14), 0 8px 16px rgba(45, 55, 72, 0.08);
     /* Soft UI inset shadow for depth */
     --shadow-inset: inset 0 2px 4px rgba(45, 55, 72, 0.04);
+    /* Grounded card hairline: border-led separation instead of float */
+    --border-soft: 1px solid rgba(53, 124, 122, 0.12);
     /* Focus ring for accessibility */
     --focus-ring: 0 0 0 3px rgba(53, 124, 122, 0.3);
     /* Transition timing */
@@ -203,10 +205,7 @@ nav {
     font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-dark);
     animation: fadeInUp 0.8s ease;
 }
 
@@ -298,7 +297,7 @@ nav {
 .hero-image img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-lg);
 }
 
 .floating-card {
@@ -342,10 +341,7 @@ nav {
 .section-header h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-dark);
 }
 
 .services-grid {
@@ -361,10 +357,11 @@ nav {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: var(--shadow);
+    border: var(--border-soft);
+    box-shadow: none;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     cursor: pointer;
     height: 100%;
     display: flex;
@@ -389,7 +386,7 @@ nav {
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow);
 }
 
 .service-card:focus-within {
@@ -725,7 +722,8 @@ body.modal-open {
     background: var(--bg-light);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    border: var(--border-soft);
+    box-shadow: none;
     margin-bottom: 3rem;
 }
 
@@ -760,7 +758,6 @@ body.modal-open {
 
 .pricing-row.highlight {
     background: linear-gradient(135deg, rgba(53, 124, 122, 0.05), rgba(90, 168, 166, 0.05));
-    border-left: 4px solid var(--primary);
 }
 
 .pricing-row.highlight:hover {
@@ -919,7 +916,7 @@ body.modal-open {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-sm);
     transition: transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
     position: relative;
     overflow: hidden;
@@ -947,7 +944,7 @@ body.modal-open {
 
 .parcours-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-lg);
 }
 
 .parcours-card:focus-within {
@@ -1095,10 +1092,6 @@ body.modal-open {
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-variant-numeric: tabular-nums;
 }
 
@@ -1149,14 +1142,11 @@ body.modal-open {
 
 .parcours-signature:hover {
     border-color: rgba(255, 193, 7, 0.6);
-    box-shadow: var(--shadow-xl), 0 0 30px rgba(255, 193, 7, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .parcours-signature .parcours-price {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #B45309;
 }
 
 /* Call to action en bas de la section */
@@ -1167,7 +1157,8 @@ body.modal-open {
     border-radius: 20px;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: var(--shadow);
+    border: var(--border-soft);
+    box-shadow: none;
 }
 
 .parcours-cta p {
@@ -1232,12 +1223,13 @@ body.modal-open {
     text-align: center;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
+    border: var(--border-soft);
+    box-shadow: none;
 }
 
 .expertise-card:hover {
     transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow);
 }
 
 .expertise-card:focus-within {
@@ -1296,10 +1288,7 @@ body.modal-open {
 .about-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-dark);
 }
 
 /* Inline SVG icons for text content */
@@ -1469,14 +1458,15 @@ body.modal-open {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: var(--shadow);
+    border: var(--border-soft);
+    box-shadow: none;
     position: relative;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow);
 }
 
 .quote-icon {
@@ -1897,10 +1887,7 @@ footer {
 .legal-modal-header h2 {
     margin: 0;
     font-size: 2rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-dark);
 }
 
 .legal-modal-close {
