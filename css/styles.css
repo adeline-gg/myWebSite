@@ -55,8 +55,7 @@ p, li, blockquote {
 }
 
 /* Pause looping animations when off-screen */
-.animation-paused::before,
-.animation-paused .parcours-signature::after {
+.animation-paused::before {
     animation-play-state: paused !important;
 }
 
@@ -463,7 +462,7 @@ nav {
 
 .service-price {
     display: inline-block;
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.1), rgba(90, 168, 166, 0.1));
+    background: rgba(53, 124, 122, 0.1);
     color: var(--primary);
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -758,11 +757,11 @@ body.modal-open {
 }
 
 .pricing-row.highlight {
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.05), rgba(90, 168, 166, 0.05));
+    background: rgba(53, 124, 122, 0.05);
 }
 
 .pricing-row.highlight:hover {
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.08), rgba(90, 168, 166, 0.08));
+    background: rgba(53, 124, 122, 0.08);
 }
 
 .pricing-service {
@@ -971,7 +970,7 @@ body.modal-open {
 
 /* Badge en haut de la carte */
 .parcours-badge {
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.1), rgba(90, 168, 166, 0.1));
+    background: rgba(53, 124, 122, 0.1);
     color: var(--primary);
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -1050,7 +1049,7 @@ body.modal-open {
 }
 
 .parcours-item:hover {
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.05), rgba(90, 168, 166, 0.05));
+    background: rgba(53, 124, 122, 0.05);
     transform: translateX(5px);
 }
 
@@ -1106,32 +1105,15 @@ body.modal-open {
 /* Carte Signature (Parcours Équilibre) */
 .parcours-signature {
     position: relative;
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(255, 235, 59, 0.05) 100%);
+    background: rgba(255, 193, 7, 0.06);
     border: 3px solid rgba(255, 193, 7, 0.3);
-}
-
-.parcours-signature::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.03) 0%, transparent 50%, rgba(255, 193, 7, 0.03) 100%);
-    pointer-events: none;
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
 }
 
 .parcours-signature-ribbon {
     position: absolute;
     top: 20px;
     right: -35px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: #FFC107;
     color: white;
     padding: 0.5rem 3rem;
     font-weight: 700;
@@ -1330,7 +1312,7 @@ body.modal-open {
 }
 
 .qualification-badge {
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.1), rgba(90, 168, 166, 0.1));
+    background: rgba(53, 124, 122, 0.1);
     color: var(--primary);
     padding: 0.5rem 1rem;
     border-radius: 25px;
@@ -1372,22 +1354,6 @@ body.modal-open {
     transition: transform var(--transition-slow), box-shadow var(--transition-slow), background var(--transition-slow);
     position: relative;
     overflow: hidden;
-}
-
-.partner-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(53, 124, 122, 0.05), transparent);
-    transform: translateX(-100%);
-    transition: transform var(--transition-slow);
-}
-
-.partner-card:hover::before {
-    transform: translateX(100%);
 }
 
 .partner-card:hover {
@@ -1554,7 +1520,7 @@ body.modal-open {
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.1), rgba(90, 168, 166, 0.1));
+    background: rgba(53, 124, 122, 0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
