@@ -56,7 +56,6 @@ p, li, blockquote {
 
 /* Pause looping animations when off-screen */
 .animation-paused::before,
-.animation-paused .floating-card,
 .animation-paused .parcours-signature::after {
     animation-play-state: paused !important;
 }
@@ -181,14 +180,8 @@ nav {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(53, 124, 122, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(53, 124, 122, 0.08) 0%, transparent 70%);
     border-radius: 50%;
-    animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
 }
 
 .hero-container {
@@ -303,30 +296,35 @@ nav {
     box-shadow: var(--shadow-lg);
 }
 
-.floating-card {
-    position: absolute;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: var(--shadow-lg);
-    animation: floatCard 6s ease-in-out infinite;
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: var(--border-soft);
+    animation: fadeInUp 0.8s ease 0.5s both;
 }
 
-@keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
-.floating-card-1 {
-    top: -20px;
-    right: -20px;
-    animation-delay: 0s;
+.hero-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--primary-dark);
 }
 
-.floating-card-2 {
-    bottom: -20px;
-    left: -20px;
-    animation-delay: 3s;
+.hero-stat-label {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--text-light);
+    max-width: 22ch;
 }
 
 /* Services Section */
@@ -1774,8 +1772,9 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .floating-card {
-        display: none;
+    .hero-stats {
+        justify-content: center;
+        gap: 2rem;
     }
 
     .pricing-row {
