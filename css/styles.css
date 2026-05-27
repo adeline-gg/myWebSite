@@ -1218,19 +1218,39 @@ body.modal-open {
 }
 
 .expertise-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.25rem;
+    row-gap: 0.4rem;
+    align-items: start;
     background: white;
-    padding: 2rem;
+    padding: 1.75rem;
     border-radius: 15px;
-    text-align: center;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    text-align: left;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     cursor: pointer;
     border: var(--border-soft);
     box-shadow: none;
 }
 
+.expertise-card h3 {
+    grid-column: 2;
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.expertise-card p {
+    grid-column: 2;
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
 .expertise-card:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+    border-color: rgba(53, 124, 122, 0.28);
+    box-shadow: var(--shadow-sm);
 }
 
 .expertise-card:focus-within {
@@ -1238,22 +1258,23 @@ body.modal-open {
 }
 
 .expertise-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, rgba(53, 124, 122, 0.1), rgba(90, 168, 166, 0.1));
-    border-radius: 50%;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 48px;
+    height: 48px;
+    background: rgba(53, 124, 122, 0.1);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
     color: var(--primary);
     transition: background var(--transition-base), color var(--transition-base);
+    flex-shrink: 0;
 }
 
 .expertise-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 .expertise-card:hover .expertise-icon {
