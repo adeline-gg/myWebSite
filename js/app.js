@@ -58,12 +58,30 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
+     * Toggle navbar "scrolled" state when hero leaves viewport top
+     */
+    const initNavbarScrollState = () => {
+        if (!('IntersectionObserver' in window)) return;
+
+        const navbar = document.querySelector('nav');
+        const hero = document.querySelector('.hero');
+        if (!navbar || !hero) return;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            navbar.classList.toggle('scrolled', !entry.isIntersecting);
+        }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 });
+
+        observer.observe(hero);
+    };
+
+    /**
      * Initialisation de l'application
      */
     const init = () => {
         initServiceAccordions();
         updateCurrentYear();
         initAnimationPausing();
+        initNavbarScrollState();
         console.log('✅ Application initialisée (mode SEO statique)');
     };
 
