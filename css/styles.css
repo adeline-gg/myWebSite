@@ -1328,6 +1328,34 @@ body.modal-open {
     transform: scale(1.05);
 }
 
+.inline-link {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(53, 124, 122, 0.35);
+    transition: text-decoration-color 180ms ease-out;
+    font-weight: 600;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+    text-decoration-color: var(--primary);
+}
+
+.inline-link:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 2px;
+}
+
+.inline-link::after {
+    content: "↗";
+    font-size: 0.75em;
+    margin-left: 0.2em;
+    opacity: 0.6;
+}
+
 /* Partners Section */
 .partners {
     padding: 5rem 2rem;
