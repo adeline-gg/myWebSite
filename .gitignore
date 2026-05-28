@@ -38,6 +38,9 @@ tmp/
 temp/
 *.tmp
 
+# Local backups (renamed files kept on disk only)
+*.old
+
 # OS files
 Thumbs.db
 .DS_Store
