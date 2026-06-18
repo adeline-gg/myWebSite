@@ -1603,6 +1603,23 @@ body.modal-open {
     box-shadow: var(--focus-ring);
 }
 
+.form-privacy-notice {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.form-privacy-notice a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.form-privacy-notice a:hover,
+.form-privacy-notice a:focus-visible {
+    text-decoration: none;
+}
+
 .form-submit {
     background: var(--primary);
     color: white;

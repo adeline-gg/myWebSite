@@ -78,9 +78,10 @@ Les données de navigation sont utilisées pour :
 
 Le traitement de vos données personnelles repose sur les bases légales suivantes :
 
-- **Votre consentement** : En remplissant le formulaire de contact, vous consentez au traitement de vos données personnelles
-- **L'intérêt légitime** : Pour les données de navigation, nous avons un intérêt légitime à améliorer notre site et nos services
-- **L'exécution d'un contrat** : Lorsque vous sollicitez nos services, le traitement est nécessaire à l'exécution de mesures précontractuelles
+- **Les mesures précontractuelles** (article 6.1.b du RGPD) : lorsque vous nous contactez via le formulaire pour solliciter nos services, le traitement de vos données est nécessaire pour répondre à votre demande et, le cas échéant, prendre des mesures à votre demande avant la conclusion d'un éventuel contrat
+- **L'intérêt légitime** (article 6.1.f du RGPD) : nous avons un intérêt légitime à répondre aux demandes envoyées via le formulaire de contact, ainsi qu'à analyser les données de navigation pour améliorer notre site et nos services
+
+Le traitement des données du formulaire de contact ne repose pas sur votre consentement : aucune case à cocher n'est donc requise pour envoyer votre demande.
 
 ---
 
@@ -161,11 +162,7 @@ Vous pouvez recevoir vos données personnelles dans un format structuré et cour
 
 ### 8.6 Droit d'opposition
 
-Vous pouvez vous opposer au traitement de vos données personnelles pour des raisons tenant à votre situation particulière.
-
-### 8.7 Droit de retirer votre consentement
-
-Vous pouvez retirer votre consentement à tout moment, sans que cela n'affecte la licéité du traitement fondé sur le consentement effectué avant le retrait.
+Vous pouvez vous opposer, pour des raisons tenant à votre situation particulière, au traitement de vos données personnelles fondé sur notre intérêt légitime.
 
 ### Comment exercer vos droits ?
 
