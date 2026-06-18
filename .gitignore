@@ -59,3 +59,11 @@ test-results/
 
 # Playwright MCP
 .playwright-mcp/
+
+# Terraform (state may contain secrets — hosting IaC lives outside this repo)
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+github-terraform/
+gitlab-terraform/

@@ -160,15 +160,15 @@ ingress:
 
 ## 🔧 Scripts NPM Disponibles
 
-| Commande | Description |
-|----------|-------------|
-| `npm run dev` | Lance serveur de développement |
-| `npm run build` | Build pour production (minification) |
-| `npm run docker:build` | Build l'image Docker |
-| `npm run docker:run` | Lance le conteneur Docker |
-| `npm run k8s:deploy` | Déploie sur Kubernetes |
-| `npm test` | Lance les tests |
-| `npm run lint` | Vérifie le code |
+| Commande               | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | Lance serveur de développement       |
+| `npm run build`        | Build pour production (minification) |
+| `npm run docker:build` | Build l'image Docker                 |
+| `npm run docker:run`   | Lance le conteneur Docker            |
+| `npm run k8s:deploy`   | Déploie sur Kubernetes               |
+| `npm test`             | Lance les tests                      |
+| `npm run lint`         | Vérifie le code                      |
 
 ## 📝 Formulaire de Contact
 
@@ -197,12 +197,13 @@ Utiliser le backend Node.js fourni dans le dossier `backend/` :
 Les métadonnées SEO sont configurées dans `index.html` :
 
 ```html
-<meta name="description" content="...">
-<meta property="og:title" content="...">
-<meta property="og:image" content="...">
+<meta name="description" content="..." />
+<meta property="og:title" content="..." />
+<meta property="og:image" content="..." />
 ```
 
 Fichiers générés :
+
 - `robots.txt` - Instructions pour les robots d'indexation
 - `sitemap.xml` - Plan du site pour les moteurs de recherche
 
@@ -255,11 +256,13 @@ Ce projet est sous licence privée. Tous droits réservés © 2025 Adeline Guill
 ## 📞 Contact
 
 **Adeline Guillot Gueret**
+
 - Email : contact@adelineguillotgueret.fr
 - Site : https://adelineguillotgueret.fr
 - Localisation : Guadeloupe
 
 **Développeur**
+
 - Xavier Gueret
 - Email : xgueret@example.com
 

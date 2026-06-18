@@ -9,12 +9,30 @@ export const RATES = {
 export const ROUND_TO = 5; // arrondi des prix au plus proche multiple (€)
 
 export const PACKS = [
-  { id: 'decouverte', label: 'Découverte', childSessions: 10, parentSessions: 2, discountPct: 6 },
-  { id: 'approfondissement', label: 'Approfondissement', childSessions: 20, parentSessions: 4, discountPct: 7 },
-  { id: 'consolidation', label: 'Consolidation', childSessions: 40, parentSessions: 6, discountPct: 8.5 },
   {
-    id: 'equilibre',
-    label: 'Équilibre',
+    id: "decouverte",
+    label: "Découverte",
+    childSessions: 10,
+    parentSessions: 2,
+    discountPct: 6,
+  },
+  {
+    id: "approfondissement",
+    label: "Approfondissement",
+    childSessions: 20,
+    parentSessions: 4,
+    discountPct: 7,
+  },
+  {
+    id: "consolidation",
+    label: "Consolidation",
+    childSessions: 40,
+    parentSessions: 6,
+    discountPct: 8.5,
+  },
+  {
+    id: "equilibre",
+    label: "Équilibre",
     childSessions: 80,
     parentSessions: 8,
     discountPct: 12,

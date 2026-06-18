@@ -3,88 +3,99 @@
  * Le contenu est désormais directement dans le HTML pour un meilleur référencement
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  /**
+   * Gestion de l'accordéon pour les cartes de service
+   */
+  const initServiceAccordions = () => {
+    const serviceCards = document.querySelectorAll(".service-card");
 
-    /**
-     * Gestion de l'accordéon pour les cartes de service
-     */
-    const initServiceAccordions = () => {
-        const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card) => {
+      card.addEventListener("click", function (e) {
+        // Prevent event bubbling
+        e.stopPropagation();
 
-        serviceCards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Prevent event bubbling
-                e.stopPropagation();
+        // Toggle active class on this specific card only
+        const isActive = this.classList.contains("active");
 
-                // Toggle active class on this specific card only
-                const isActive = this.classList.contains('active');
-
-                if (isActive) {
-                    this.classList.remove('active');
-                } else {
-                    this.classList.add('active');
-                }
-
-                console.log(`Service card ${this.dataset.serviceIndex} toggled:`, !isActive);
-            });
-        });
-    };
-
-    /**
-     * Met à jour l'année dans le footer
-     */
-    const updateCurrentYear = () => {
-        const yearElement = document.getElementById('current-year');
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
+        if (isActive) {
+          this.classList.remove("active");
+        } else {
+          this.classList.add("active");
         }
-    };
 
-    /**
-     * Pause les animations en boucle quand leur section est hors écran
-     */
-    const initAnimationPausing = () => {
-        if (!('IntersectionObserver' in window)) return;
+        console.log(
+          `Service card ${this.dataset.serviceIndex} toggled:`,
+          !isActive,
+        );
+      });
+    });
+  };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                entry.target.classList.toggle('animation-paused', !entry.isIntersecting);
-            });
-        }, { threshold: 0 });
+  /**
+   * Met à jour l'année dans le footer
+   */
+  const updateCurrentYear = () => {
+    const yearElement = document.getElementById("current-year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  };
 
-        document.querySelectorAll('.hero, .parcours').forEach(section => {
-            observer.observe(section);
+  /**
+   * Pause les animations en boucle quand leur section est hors écran
+   */
+  const initAnimationPausing = () => {
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle(
+            "animation-paused",
+            !entry.isIntersecting,
+          );
         });
-    };
+      },
+      { threshold: 0 },
+    );
 
-    /**
-     * Toggle navbar "scrolled" state when hero leaves viewport top
-     */
-    const initNavbarScrollState = () => {
-        if (!('IntersectionObserver' in window)) return;
+    document.querySelectorAll(".hero, .parcours").forEach((section) => {
+      observer.observe(section);
+    });
+  };
 
-        const navbar = document.querySelector('nav');
-        const hero = document.querySelector('.hero');
-        if (!navbar || !hero) return;
+  /**
+   * Toggle navbar "scrolled" state when hero leaves viewport top
+   */
+  const initNavbarScrollState = () => {
+    if (!("IntersectionObserver" in window)) return;
 
-        const observer = new IntersectionObserver(([entry]) => {
-            navbar.classList.toggle('scrolled', !entry.isIntersecting);
-        }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 });
+    const navbar = document.querySelector("nav");
+    const hero = document.querySelector(".hero");
+    if (!navbar || !hero) return;
 
-        observer.observe(hero);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle("scrolled", !entry.isIntersecting);
+      },
+      { rootMargin: "-80px 0px 0px 0px", threshold: 0 },
+    );
 
-    /**
-     * Initialisation de l'application
-     */
-    const init = () => {
-        initServiceAccordions();
-        updateCurrentYear();
-        initAnimationPausing();
-        initNavbarScrollState();
-        console.log('✅ Application initialisée (mode SEO statique)');
-    };
+    observer.observe(hero);
+  };
 
-    // Lancer l'initialisation
-    init();
+  /**
+   * Initialisation de l'application
+   */
+  const init = () => {
+    initServiceAccordions();
+    updateCurrentYear();
+    initAnimationPausing();
+    initNavbarScrollState();
+    console.log("✅ Application initialisée (mode SEO statique)");
+  };
+
+  // Lancer l'initialisation
+  init();
 });

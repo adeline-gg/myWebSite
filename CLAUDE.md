@@ -46,10 +46,8 @@ npm run docker:run   # Run container local
 ## Palette de Couleurs
 
 ```css
---primary: #357C7A      /* Teal */
---secondary: #9FD3C0    /* Vert doux */
---accent: #E8B59A       /* Pêche */
---bg-light: #FAF7F2     /* Fond */
+--primary: #357c7a /* Teal */ --secondary: #9fd3c0 /* Vert doux */ --accent:
+  #e8b59a /* Pêche */ --bg-light: #faf7f2 /* Fond */;
 ```
 
 ## Fonctionnalités Principales
