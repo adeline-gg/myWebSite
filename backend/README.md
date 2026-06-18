@@ -12,6 +12,7 @@ npm install
 ## Configuration
 
 1. Copier le fichier d'exemple :
+
 ```bash
 cp .env.example .env
 ```
@@ -52,11 +53,13 @@ SMTP_PASS=votre-mot-de-passe-mailgun
 ## Démarrage
 
 ### Mode développement
+
 ```bash
 npm run dev
 ```
 
 ### Mode production
+
 ```bash
 npm start
 ```
@@ -88,34 +91,34 @@ async function handleSubmit(event) {
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
 
-  const button = event.target.querySelector('.form-submit');
-  button.textContent = 'Envoi en cours...';
+  const button = event.target.querySelector(".form-submit");
+  button.textContent = "Envoi en cours...";
   button.disabled = true;
 
   try {
-    const response = await fetch('http://localhost:3000/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+    const response = await fetch("http://localhost:3000/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
 
     const result = await response.json();
 
     if (result.success) {
-      button.textContent = '✓ Message envoyé !';
-      button.style.background = 'linear-gradient(135deg, #48BB78, #38A169)';
+      button.textContent = "✓ Message envoyé !";
+      button.style.background = "linear-gradient(135deg, #48BB78, #38A169)";
       event.target.reset();
     } else {
       throw new Error(result.error);
     }
   } catch (error) {
-    button.textContent = '✗ Erreur';
-    button.style.background = 'linear-gradient(135deg, #F56565, #E53E3E)';
-    alert('Erreur lors de l\'envoi: ' + error.message);
+    button.textContent = "✗ Erreur";
+    button.style.background = "linear-gradient(135deg, #F56565, #E53E3E)";
+    alert("Erreur lors de l'envoi: " + error.message);
   } finally {
     setTimeout(() => {
-      button.textContent = 'Envoyer le message';
-      button.style.background = '';
+      button.textContent = "Envoyer le message";
+      button.style.background = "";
       button.disabled = false;
     }, 3000);
   }
@@ -139,6 +142,7 @@ CMD ["node", "server.js"]
 ```
 
 Build et run :
+
 ```bash
 docker build -t adeline-backend .
 docker run -p 3000:3000 --env-file .env adeline-backend
@@ -161,6 +165,7 @@ Ajouter un deployment pour le backend dans les charts Helm.
 Si vous ne voulez pas gérer un backend :
 
 ### Formspree (Recommandé)
+
 - Gratuit jusqu'à 50 soumissions/mois
 - https://formspree.io/
 
@@ -171,9 +176,11 @@ Si vous ne voulez pas gérer un backend :
 ```
 
 ### Netlify Forms
+
 - Gratuit si hébergé sur Netlify
 - https://www.netlify.com/products/forms/
 
 ### Web3Forms
+
 - Gratuit et open-source
 - https://web3forms.com/

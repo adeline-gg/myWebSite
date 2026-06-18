@@ -12,25 +12,25 @@ const ContactForm = {
   // Configuration
   config: {
     // Options: 'backend' | 'formspree' | 'netlify' | 'simulation'
-    mode: 'simulation',
+    mode: "simulation",
 
     // URL du backend (si mode = 'backend')
-    backendUrl: 'http://localhost:3000/api/contact',
+    backendUrl: "http://localhost:3000/api/contact",
 
     // ID Formspree (si mode = 'formspree')
-    formspreeId: 'YOUR_FORMSPREE_ID'
+    formspreeId: "YOUR_FORMSPREE_ID",
   },
 
   /**
    * Initialise le formulaire de contact
    */
   init() {
-    const form = document.querySelector('.contact-form');
+    const form = document.querySelector(".contact-form");
     if (!form) return;
 
     // Remplacer l'attribut onsubmit inline
-    form.removeAttribute('onsubmit');
-    form.addEventListener('submit', (e) => this.handleSubmit(e));
+    form.removeAttribute("onsubmit");
+    form.addEventListener("submit", (e) => this.handleSubmit(e));
 
     console.log(`Formulaire de contact initialisé (mode: ${this.config.mode})`);
   },
@@ -42,48 +42,47 @@ const ContactForm = {
     event.preventDefault();
 
     const form = event.target;
-    const button = form.querySelector('.form-submit');
+    const button = form.querySelector(".form-submit");
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
     // Animation de début
-    this.setButtonState(button, 'loading');
+    this.setButtonState(button, "loading");
 
     try {
       let result;
 
       switch (this.config.mode) {
-        case 'backend':
+        case "backend":
           result = await this.sendViaBackend(data);
           break;
-        case 'formspree':
+        case "formspree":
           result = await this.sendViaFormspree(data);
           break;
-        case 'netlify':
+        case "netlify":
           result = await this.sendViaNetlify(form);
           break;
-        case 'simulation':
+        case "simulation":
         default:
           result = await this.simulateSend(data);
           break;
       }
 
       if (result.success) {
-        this.setButtonState(button, 'success');
+        this.setButtonState(button, "success");
         form.reset();
-        this.showNotification('Message envoyé avec succès !', 'success');
+        this.showNotification("Message envoyé avec succès !", "success");
       } else {
-        throw new Error(result.error || 'Erreur lors de l\'envoi');
+        throw new Error(result.error || "Erreur lors de l'envoi");
       }
-
     } catch (error) {
-      console.error('Erreur:', error);
-      this.setButtonState(button, 'error');
-      this.showNotification(error.message || 'Erreur lors de l\'envoi', 'error');
+      console.error("Erreur:", error);
+      this.setButtonState(button, "error");
+      this.showNotification(error.message || "Erreur lors de l'envoi", "error");
     } finally {
       // Réinitialiser le bouton après 3 secondes
       setTimeout(() => {
-        this.setButtonState(button, 'initial');
+        this.setButtonState(button, "initial");
       }, 3000);
     }
   },
@@ -93,16 +92,16 @@ const ContactForm = {
    */
   async sendViaBackend(data) {
     const response = await fetch(this.config.backendUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.error || 'Erreur serveur');
+      throw new Error(error.error || "Erreur serveur");
     }
 
     return await response.json();
@@ -112,16 +111,19 @@ const ContactForm = {
    * Envoie via Formspree
    */
   async sendViaFormspree(data) {
-    const response = await fetch(`https://formspree.io/f/${this.config.formspreeId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      `https://formspree.io/f/${this.config.formspreeId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data)
-    });
+    );
 
     if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi via Formspree');
+      throw new Error("Erreur lors de l'envoi via Formspree");
     }
 
     return { success: true };
@@ -131,14 +133,14 @@ const ContactForm = {
    * Envoie via Netlify Forms
    */
   async sendViaNetlify(form) {
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString(),
     });
 
     if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi via Netlify');
+      throw new Error("Erreur lors de l'envoi via Netlify");
     }
 
     return { success: true };
@@ -148,20 +150,20 @@ const ContactForm = {
    * Simulation d'envoi (pour développement)
    */
   async simulateSend(data) {
-    console.log('📧 Simulation d\'envoi:', data);
+    console.log("📧 Simulation d'envoi:", data);
 
     // Validation basique
     if (!data.name || !data.email || !data.subject || !data.message) {
-      throw new Error('Tous les champs obligatoires doivent être remplis');
+      throw new Error("Tous les champs obligatoires doivent être remplis");
     }
 
     // Validation email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      throw new Error('Format d\'email invalide');
+      throw new Error("Format d'email invalide");
     }
 
     // Simulation d'un délai réseau
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     return { success: true };
   },
@@ -172,25 +174,25 @@ const ContactForm = {
   setButtonState(button, state) {
     const states = {
       initial: {
-        text: 'Envoyer le message',
-        style: '',
-        disabled: false
+        text: "Envoyer le message",
+        style: "",
+        disabled: false,
       },
       loading: {
-        text: 'Envoi en cours...',
-        style: 'opacity: 0.7',
-        disabled: true
+        text: "Envoi en cours...",
+        style: "opacity: 0.7",
+        disabled: true,
       },
       success: {
-        text: '✓ Message envoyé !',
-        style: 'background: linear-gradient(135deg, #48BB78, #38A169)',
-        disabled: true
+        text: "✓ Message envoyé !",
+        style: "background: linear-gradient(135deg, #48BB78, #38A169)",
+        disabled: true,
       },
       error: {
-        text: '✗ Erreur d\'envoi',
-        style: 'background: linear-gradient(135deg, #F56565, #E53E3E)',
-        disabled: true
-      }
+        text: "✗ Erreur d'envoi",
+        style: "background: linear-gradient(135deg, #F56565, #E53E3E)",
+        disabled: true,
+      },
     };
 
     const config = states[state];
@@ -202,13 +204,13 @@ const ContactForm = {
   /**
    * Affiche une notification toast
    */
-  showNotification(message, type = 'info') {
+  showNotification(message, type = "info") {
     // Créer l'élément notification s'il n'existe pas
-    let notification = document.getElementById('contact-notification');
+    let notification = document.getElementById("contact-notification");
 
     if (!notification) {
-      notification = document.createElement('div');
-      notification.id = 'contact-notification';
+      notification = document.createElement("div");
+      notification.id = "contact-notification";
       notification.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -228,9 +230,11 @@ const ContactForm = {
 
     // Couleurs selon le type
     const colors = {
-      success: 'background: linear-gradient(135deg, #48BB78, #38A169); color: white;',
-      error: 'background: linear-gradient(135deg, #F56565, #E53E3E); color: white;',
-      info: 'background: linear-gradient(135deg, #4299E1, #3182CE); color: white;'
+      success:
+        "background: linear-gradient(135deg, #48BB78, #38A169); color: white;",
+      error:
+        "background: linear-gradient(135deg, #F56565, #E53E3E); color: white;",
+      info: "background: linear-gradient(135deg, #4299E1, #3182CE); color: white;",
     };
 
     notification.textContent = message;
@@ -238,21 +242,21 @@ const ContactForm = {
 
     // Animation d'apparition
     setTimeout(() => {
-      notification.style.transform = 'translateY(0)';
-      notification.style.opacity = '1';
+      notification.style.transform = "translateY(0)";
+      notification.style.opacity = "1";
     }, 10);
 
     // Masquer après 5 secondes
     setTimeout(() => {
-      notification.style.transform = 'translateY(100px)';
-      notification.style.opacity = '0';
+      notification.style.transform = "translateY(100px)";
+      notification.style.opacity = "0";
     }, 5000);
-  }
+  },
 };
 
 // Initialisation au chargement de la page
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => ContactForm.init());
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => ContactForm.init());
 } else {
   ContactForm.init();
 }

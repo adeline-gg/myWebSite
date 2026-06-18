@@ -7,7 +7,8 @@ export function roundToNearest(value, step) {
 
 /** Compute real value, discounted price (and schedule splits) for one pack. */
 export function computePack(pack, rates, roundTo) {
-  const value = pack.childSessions * rates.child + pack.parentSessions * rates.parent;
+  const value =
+    pack.childSessions * rates.child + pack.parentSessions * rates.parent;
   const price = roundToNearest(value * (1 - pack.discountPct / 100), roundTo);
   const result = {
     id: pack.id,
@@ -27,5 +28,7 @@ export function computePack(pack, rates, roundTo) {
 
 /** Compute every pack from a config module ({ RATES, ROUND_TO, PACKS }). */
 export function computeAll(config) {
-  return config.PACKS.map((pack) => computePack(pack, config.RATES, config.ROUND_TO));
+  return config.PACKS.map((pack) =>
+    computePack(pack, config.RATES, config.ROUND_TO),
+  );
 }
