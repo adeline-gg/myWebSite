@@ -1297,6 +1297,50 @@
             <input type="tel" id="phone" name="phone" />
           </div>
           <div class="form-group">
+            <label for="commune">Commune</label>
+            <input
+              type="text"
+              id="commune"
+              name="commune"
+              list="communes-guadeloupe"
+              autocomplete="address-level2"
+            />
+            <datalist id="communes-guadeloupe">
+              <option value="Les Abymes"></option>
+              <option value="Anse-Bertrand"></option>
+              <option value="Baie-Mahault"></option>
+              <option value="Baillif"></option>
+              <option value="Basse-Terre"></option>
+              <option value="Bouillante"></option>
+              <option value="Capesterre-Belle-Eau"></option>
+              <option value="Capesterre-de-Marie-Galante"></option>
+              <option value="Deshaies"></option>
+              <option value="La Désirade"></option>
+              <option value="Le Gosier"></option>
+              <option value="Gourbeyre"></option>
+              <option value="Goyave"></option>
+              <option value="Grand-Bourg"></option>
+              <option value="Lamentin"></option>
+              <option value="Morne-à-l'Eau"></option>
+              <option value="Le Moule"></option>
+              <option value="Petit-Bourg"></option>
+              <option value="Petit-Canal"></option>
+              <option value="Pointe-à-Pitre"></option>
+              <option value="Pointe-Noire"></option>
+              <option value="Port-Louis"></option>
+              <option value="Saint-Claude"></option>
+              <option value="Saint-François"></option>
+              <option value="Saint-Louis"></option>
+              <option value="Sainte-Anne"></option>
+              <option value="Sainte-Rose"></option>
+              <option value="Terre-de-Bas"></option>
+              <option value="Terre-de-Haut"></option>
+              <option value="Trois-Rivières"></option>
+              <option value="Vieux-Fort"></option>
+              <option value="Vieux-Habitants"></option>
+            </datalist>
+          </div>
+          <div class="form-group">
             <label for="subject">Objet de votre demande *</label>
             <input type="text" id="subject" name="subject" required />
           </div>
@@ -1306,7 +1350,8 @@
           </div>
           <p class="form-privacy-notice">
             <strong>Protection de vos données.</strong> Les informations
-            recueillies via ce formulaire (nom, e-mail, téléphone, message) sont
+            recueillies via ce formulaire (nom, e-mail, téléphone, commune,
+            message) sont
             traitées par <strong>Adeline Guillot Gueret</strong> (entreprise
             individuelle, SIREN 978&nbsp;658&nbsp;607), responsable du
             traitement, dans le seul but de répondre à votre demande.
