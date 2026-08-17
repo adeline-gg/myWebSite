@@ -53,6 +53,7 @@ Les données personnelles collectées via le formulaire de contact sont :
 - Nom complet
 - Adresse email
 - Numéro de téléphone (optionnel)
+- Commune (optionnel)
 - Message
 
 Ces données sont collectées dans le seul but de répondre à vos demandes de contact et ne sont en aucun cas utilisées à des fins commerciales ou transmises à des tiers.

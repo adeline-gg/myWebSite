@@ -83,7 +83,7 @@ app.get("/health", (req, res) => {
 // Route principale du formulaire de contact
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, phone, subject, message } = req.body;
+    const { name, email, phone, commune, subject, message } = req.body;
 
     // Validation
     const validation = validateContactForm({ name, email, subject, message });
@@ -106,6 +106,7 @@ Nouveau message reçu via le formulaire de contact:
 Nom: ${name}
 Email: ${email}
 Téléphone: ${phone || "Non renseigné"}
+Commune: ${commune || "Non renseignée"}
 Sujet: ${subject}
 
 Message:
@@ -149,6 +150,16 @@ Envoyé depuis le site adelinegueret.fr
       <div class="field">
         <div class="label">📞 Téléphone:</div>
         <div class="value">${phone}</div>
+      </div>
+      `
+          : ""
+      }
+      ${
+        commune
+          ? `
+      <div class="field">
+        <div class="label">📍 Commune:</div>
+        <div class="value">${commune}</div>
       </div>
       `
           : ""

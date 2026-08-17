@@ -33,6 +33,7 @@ Lorsque vous utilisez le formulaire de contact présent sur notre site, nous col
 - **Nom complet** (obligatoire)
 - **Adresse email** (obligatoire)
 - **Numéro de téléphone** (optionnel)
+- **Commune** (optionnel)
 - **Objet de la demande** (obligatoire)
 - **Message** (obligatoire)
 
