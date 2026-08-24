@@ -2391,3 +2391,136 @@ footer {
     font-size: 1.3rem;
   }
 }
+
+/* Glossary Section - Glossaire des sigles et termes */
+.glossary {
+  padding: 5rem 2rem;
+  background: white;
+}
+
+.glossary-list {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.glossary-group {
+  margin: 3rem 0 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: var(--border-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.glossary-group:first-child {
+  margin-top: 0;
+}
+
+.glossary-item {
+  border-bottom: var(--border-soft);
+}
+
+.glossary-item summary {
+  display: grid;
+  grid-template-columns: 11rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem 0.75rem;
+  border-radius: 12px;
+  cursor: pointer;
+  list-style: none;
+  transition: background var(--transition-base);
+}
+
+.glossary-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.glossary-item summary:hover {
+  background: var(--bg-light);
+}
+
+.glossary-item summary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.glossary-abbr {
+  justify-self: start;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  background: rgba(53, 124, 122, 0.1);
+  color: var(--primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.glossary-label {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.glossary-item summary::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.25rem;
+  border-right: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform var(--transition-base) var(--ease-out-quart);
+}
+
+.glossary-item[open] summary::after {
+  transform: translateY(15%) rotate(225deg);
+}
+
+.glossary-item[open] {
+  background: var(--bg-light);
+  border-radius: 12px;
+}
+
+.glossary-body {
+  padding: 0 1rem 1.5rem 12.5rem;
+}
+
+.glossary-body p {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .glossary {
+    padding: 3rem 1.25rem;
+  }
+
+  .glossary-item summary {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 0.5rem 1rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .glossary-abbr {
+    grid-column: 1;
+  }
+
+  .glossary-label {
+    grid-column: 1;
+  }
+
+  .glossary-item summary::after {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0.4rem;
+  }
+
+  .glossary-body {
+    padding: 0 0.5rem 1.25rem;
+  }
+}

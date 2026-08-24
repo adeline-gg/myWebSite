@@ -52,6 +52,14 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Section Glossaire -->
+    <url>
+        <loc>https://adelineguillotgueret.fr/#glossaire</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- Section Contact -->
     <url>
         <loc>https://adelineguillotgueret.fr/#contact</loc>
