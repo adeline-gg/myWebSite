@@ -44,6 +44,14 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- Section Boîte à outils -->
+    <url>
+        <loc>https://adelineguillotgueret.fr/#outils</loc>
+        <lastmod>2026-08-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- Section Contact -->
     <url>
         <loc>https://adelineguillotgueret.fr/#contact</loc>
