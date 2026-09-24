@@ -96,18 +96,18 @@
     serviceCards.forEach((card, index) => {
       card.style.cursor = "pointer";
       card.addEventListener("click", () => {
-        openModal(index);
+        openModal(index, card.querySelector(".service-toggle"));
       });
     });
   }
 
   // Ouvrir le modal avec les données d'un service
-  function openModal(serviceIndex) {
+  function openModal(serviceIndex, trigger) {
     const service = servicesData[serviceIndex];
     if (!service) return;
 
     // Sauvegarder l'élément déclencheur pour restaurer le focus
-    triggerElement = document.activeElement;
+    triggerElement = trigger || document.activeElement;
 
     // Remplir le modal avec les données
     if (modalIcon) modalIcon.textContent = service.icon;
