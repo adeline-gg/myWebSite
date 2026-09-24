@@ -683,7 +683,7 @@ nav.scrolled {
   line-height: 1.8;
 }
 
-.service-modal-body h4 {
+.service-modal-body h3 {
   color: var(--primary);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -883,7 +883,7 @@ body.modal-open {
   margin-right: auto;
 }
 
-.pricing-travel h4 {
+.pricing-travel h3 {
   color: var(--primary);
   font-size: 1.25rem;
   font-weight: 600;
@@ -1186,6 +1186,26 @@ body.modal-open {
   color: var(--text-light);
   margin-top: 0.5rem;
   line-height: 1.6;
+}
+
+.parcours-title {
+  min-height: 60px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.parcours-card .parcours-title h3 {
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.parcours-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-light);
 }
 
 /* Carte Signature (Parcours Équilibre) */
@@ -1800,9 +1820,10 @@ footer {
   margin-bottom: 2rem;
 }
 
-.footer-section h3 {
+.footer-section h2 {
   margin-bottom: 1rem;
   color: white;
+  font-size: 1.17rem;
 }
 
 .footer-section a {
@@ -2269,21 +2290,13 @@ footer {
 }
 
 /* Styling for markdown content in modal */
-.legal-modal-body h1 {
-  font-size: 2rem;
-  margin: 2rem 0 1rem;
-  color: var(--primary);
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--bg-light);
-}
-
-.legal-modal-body h2 {
+.legal-modal-body h3 {
   font-size: 1.5rem;
   margin: 1.5rem 0 1rem;
   color: var(--primary-dark);
 }
 
-.legal-modal-body h3 {
+.legal-modal-body h4 {
   font-size: 1.2rem;
   margin: 1.2rem 0 0.8rem;
   color: var(--text-dark);
@@ -2380,11 +2393,7 @@ footer {
     max-height: 60vh;
   }
 
-  .legal-modal-body h1 {
-    font-size: 1.5rem;
-  }
-
-  .legal-modal-body h2 {
+  .legal-modal-body h3 {
     font-size: 1.3rem;
   }
 }

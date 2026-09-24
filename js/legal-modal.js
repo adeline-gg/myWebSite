@@ -8,10 +8,11 @@
 function convertMarkdownToHtml(markdown) {
   let html = markdown;
 
-  // Headers
-  html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>");
-  html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>");
-  html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>");
+  // Headers: the modal's own h2 already carries the document title, so the
+  // Markdown h1 is dropped and the other levels are shifted down by one
+  html = html.replace(/^### (.*$)/gim, "<h4>$1</h4>");
+  html = html.replace(/^## (.*$)/gim, "<h3>$1</h3>");
+  html = html.replace(/^# .*$/gim, "");
 
   // Bold
   html = html.replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>");
