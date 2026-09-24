@@ -1158,7 +1158,6 @@ body.modal-open {
 .parcours-description small {
   font-size: 0.85rem;
   color: var(--text-light);
-  opacity: 0.8;
 }
 
 .parcours-pricing {
