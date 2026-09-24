@@ -58,6 +58,29 @@ footer {
   --focus-color: #ffffff;
 }
 
+/* Programmatic focus targets (skip link, in-page anchors) are not controls */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: calc(var(--z-modal) + 1);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  background: var(--primary-dark);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
 body {
   font-family:
     "Hanken Grotesk",
