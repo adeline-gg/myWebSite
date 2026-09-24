@@ -699,6 +699,26 @@ nav.scrolled {
   margin-bottom: 0.75rem;
 }
 
+.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.service-modal-body .check-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.service-modal-body .check-list li {
+  margin-bottom: 1rem;
+}
+
+/* Decorative tick: empty alt text so screen readers do not announce it */
+.check-list li::before {
+  content: "✓ ";
+  content: "✓ " / "";
+}
+
 .service-modal-body p {
   margin-bottom: 1rem;
 }
@@ -1422,6 +1442,8 @@ body.modal-open {
 }
 
 .qualifications {
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
