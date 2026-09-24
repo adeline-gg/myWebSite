@@ -2058,27 +2058,6 @@
         });
       });
 
-      // Accessibility: Add keyboard navigation
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Tab") {
-          document.body.classList.add("keyboard-nav");
-        }
-      });
-
-      document.addEventListener("mousedown", function () {
-        document.body.classList.remove("keyboard-nav");
-      });
-
-      // Add focus styles for keyboard navigation
-      const focusStyle = document.createElement("style");
-      focusStyle.textContent = `
-            .keyboard-nav *:focus {
-                outline: 3px solid var(--primary);
-                outline-offset: 2px;
-            }
-        `;
-      document.head.appendChild(focusStyle);
-
       // Performance: Lazy loading for images
       if ("IntersectionObserver" in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {

@@ -46,7 +46,7 @@
 
 | Thématique RGAA | État | Critères non conformes relevés |
 |---|---|---|
-| 1. Images | ✅ Conforme | — (SVG décoratifs en `aria-hidden`, `alt` renseignés) |
+| 1. Images | ⚠️ | 1.3 — `alt` du hero erroné (SVG décoratifs en `aria-hidden` : OK) |
 | 3. Couleurs | ❌ | 3.2 (contrastes du texte), 3.3 (bordure des champs) |
 | 5. Tableaux | ❌ | 5.x — grille tarifaire codée en `<div>` |
 | 6. Liens | ⚠️ | 6.1 — globalement conforme, voir P3 |
@@ -193,6 +193,12 @@ footer :focus-visible {
 - Tous les liens du Markdown reçoivent `target="_blank"` sans indication (`js/legal-modal.js:24-27`) → ajouter « (nouvelle fenêtre) » ou garder la même fenêtre pour les liens internes.
 - Le message d'erreur est en rouge seul, sans `role="alert"`.
 
+### 2.7 🖼️ Alternative textuelle erronée de l'image du hero — RGAA 1.3
+
+- **Constat** : `hero-image.png` montre un **bureau avec du matériel pédagogique** (planning visuel, livres, formes), pas Adeline. Son `alt` (« Adeline Guillot Gueret - Enseignante spécialisée en Guadeloupe ») décrit donc une personne absente de l'image.
+- **Où** : `index.html:191-196`.
+- **Correction** : `alt=""` si l'image est décorative, ou une description fidèle (ex. « Bureau de travail avec planning visuel, livres et matériel pédagogique adapté »).
+
 ------
 
 ## 🟡 Priorité 3 — Mineur / bonnes pratiques
@@ -232,7 +238,7 @@ footer :focus-visible {
 | Zoom navigateur à 200 % (10.4) | Seul le reflow à 320 px a été mesuré |
 | Mode contraste élevé Windows (`forced-colors`) | Confirmer la perte du focus (box-shadow) |
 | Espacement du texte (10.12) | Débordement mesuré sur `.hero` et `.parcours-card` (overflow `hidden`) → **à confirmer visuellement** |
-| Pertinence des `alt` des deux photos | Vérifier que `hero-image.png` représente bien Adeline (sinon : `alt` à revoir ou vide) |
+| Pertinence de l'`alt` de `about-image.jpg` | `hero-image.png` vérifié → non conforme (voir 2.7) ; photo « Qui suis-je » à confirmer |
 | Page de succès Netlify Forms après envoi | Hors site, non auditée (langue, retour vers le site) |
 
 ------
