@@ -980,7 +980,6 @@ body.modal-open {
   background: white;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: var(--shadow-sm);
   transition:
     transform var(--transition-slow),
     box-shadow var(--transition-slow),
@@ -989,7 +988,10 @@ body.modal-open {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  /* 3px border reserved for the hover colour; the resting hairline is a
+     1px ring so the content does not shift when the border appears */
   border: 3px solid transparent;
+  box-shadow: 0 0 0 1px rgba(53, 124, 122, 0.12);
   cursor: pointer;
 }
 
@@ -1192,6 +1194,7 @@ body.modal-open {
   position: relative;
   background: rgba(255, 193, 7, 0.06);
   border: 3px solid rgba(255, 193, 7, 0.3);
+  box-shadow: none;
 }
 
 .parcours-signature-ribbon {
