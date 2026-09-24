@@ -20,10 +20,11 @@ function convertMarkdownToHtml(markdown) {
   // Italic
   html = html.replace(/\*(.*?)\*/gim, "<em>$1</em>");
 
-  // Links
-  html = html.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/gim,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+  // Links: only external ones open a new window, and they say so
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, (match, text, href) =>
+    /^https?:\/\//.test(href)
+      ? `<a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${text} (nouvelle fenêtre)">${text} ↗</a>`
+      : `<a href="${href}">${text}</a>`,
   );
 
   // Horizontal rules
@@ -122,10 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Focus sur le bouton de fermeture
     setTimeout(() => closeBtn?.focus(), 100);
 
-    // Load markdown content
+    // Load markdown content (aria-busy tells assistive tech to wait for it)
+    modalBody.setAttribute("aria-busy", "true");
     try {
       modalBody.innerHTML =
-        '<p style="text-align: center; color: var(--text-light);">Chargement...</p>';
+        '<p role="status" style="text-align: center; color: var(--text-light);">Chargement…</p>';
       const response = await fetch(mdFilePath);
       if (!response.ok) throw new Error(`Failed to load ${mdFilePath}`);
       const markdown = await response.text();
@@ -135,7 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Erreur lors du chargement du contenu:", error);
       modalBody.innerHTML =
-        '<p style="color: red; text-align: center;">Erreur lors du chargement du contenu.</p>';
+        '<p role="alert" style="color: #b42318; text-align: center;">Erreur : le contenu n\'a pas pu être chargé. Réessayez plus tard.</p>';
+    } finally {
+      modalBody.removeAttribute("aria-busy");
     }
   };
 
