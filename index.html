@@ -1957,6 +1957,11 @@
     <script src="js/pricing.data.js"></script>
     <script src="js/accessibility.js"></script>
     <script>
+      // Honour the OS setting and the widget's "Pause animations" option
+      const reduceMotion = () =>
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        document.documentElement.classList.contains("a11y-pause-animations");
+
       // Smooth Scrolling - using event delegation for dynamically loaded links
       document.addEventListener("click", function (e) {
         const anchor = e.target.closest('a[href^="#"]');
@@ -1973,7 +1978,7 @@
           const target = document.querySelector(href);
           if (target) {
             target.scrollIntoView({
-              behavior: "smooth",
+              behavior: reduceMotion() ? "auto" : "smooth",
               block: "start",
             });
             // Move keyboard/screen-reader focus along with the scroll
@@ -2091,13 +2096,14 @@
           if (entry.isIntersecting) {
             entry.target.style.opacity = "1";
             entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      // Observe all sections except hero
+      // Observe all sections except hero (content stays visible when motion is reduced)
       document.querySelectorAll("section").forEach((section) => {
-        if (!section.classList.contains("hero")) {
+        if (!section.classList.contains("hero") && !reduceMotion()) {
           section.style.opacity = "0";
           section.style.transform = "translateY(30px)";
           section.style.transition = "all 0.8s ease";
@@ -2113,10 +2119,10 @@
       }
 
       window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        if (hero) {
-          hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
+        if (!hero) return;
+        hero.style.transform = reduceMotion()
+          ? ""
+          : `translateY(${window.pageYOffset * 0.3}px)`;
       });
 
       // Add hover effect to cards with touch support
