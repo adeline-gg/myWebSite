@@ -1702,19 +1702,47 @@
           >
             <input type="hidden" name="form-name" value="contact" />
             <p style="display: none">
-              <label>Ne pas remplir : <input name="bot-field" /></label>
+              <label
+                >Ne pas remplir : <input name="bot-field" autocomplete="off"
+              /></label>
+            </p>
+            <p class="form-required-note">
+              Les champs marqués d'un astérisque (*) sont obligatoires.
             </p>
             <div class="form-group">
               <label for="name">Nom complet *</label>
-              <input type="text" id="name" name="name" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+              />
             </div>
             <div class="form-group">
               <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                aria-describedby="email-hint"
+                required
+              />
+              <p class="form-hint" id="email-hint">
+                Exemple : prenom.nom@exemple.fr
+              </p>
             </div>
             <div class="form-group">
               <label for="phone">Téléphone</label>
-              <input type="tel" id="phone" name="phone" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                aria-describedby="phone-hint"
+              />
+              <p class="form-hint" id="phone-hint">Exemple : 0690 12 34 56</p>
             </div>
             <div class="form-group">
               <label for="commune">Commune</label>

@@ -1679,7 +1679,7 @@ body.modal-open {
 .form-group textarea {
   width: 100%;
   padding: 1rem;
-  border: 2px solid transparent;
+  border: 2px solid var(--text-light);
   border-radius: 10px;
   background: white;
   transition:
@@ -1690,7 +1690,19 @@ body.modal-open {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--primary);
+  border-color: var(--primary-dark);
+}
+
+.form-required-note {
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.form-hint {
+  margin-top: 0.4rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
 }
 
 .form-privacy-notice {
