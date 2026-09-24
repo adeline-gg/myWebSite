@@ -917,7 +917,7 @@ body.modal-open {
 
 .travel-badge {
   background: var(--secondary);
-  color: var(--primary-dark);
+  color: var(--text-dark);
   padding: 0.35rem 0.85rem;
   border-radius: 20px;
   font-weight: 600;
@@ -1038,7 +1038,7 @@ body.modal-open {
 /* Badge en haut de la carte */
 .parcours-badge {
   background: rgba(53, 124, 122, 0.1);
-  color: var(--primary);
+  color: var(--primary-dark);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -1199,7 +1199,7 @@ body.modal-open {
   top: 20px;
   right: -35px;
   background: #ffc107;
-  color: white;
+  color: var(--text-dark);
   padding: 0.5rem 3rem;
   font-weight: 700;
   font-size: 0.9rem;
@@ -1403,7 +1403,7 @@ body.modal-open {
 
 .qualification-badge {
   background: rgba(53, 124, 122, 0.1);
-  color: var(--primary);
+  color: var(--primary-dark);
   padding: 0.5rem 1rem;
   border-radius: 25px;
   font-weight: 600;
@@ -1829,19 +1829,17 @@ footer {
 }
 
 .footer-bottom a {
-  color: #64b5f6;
-  text-decoration: none;
-  transition: color var(--transition-slow);
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .footer-bottom a:hover {
-  color: #90caf9;
-  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .footer-bottom a:focus-visible {
   border-radius: 4px;
-  color: #90caf9;
 }
 
 /* Mobile Menu */
