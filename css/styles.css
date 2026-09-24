@@ -403,7 +403,7 @@ nav.scrolled {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   align-items: stretch;
 }
@@ -971,7 +971,7 @@ body.modal-open {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -1206,6 +1206,11 @@ body.modal-open {
   transform: rotate(45deg);
   box-shadow: var(--shadow-sm);
   z-index: var(--z-dropdown);
+}
+
+/* Push the badge below the ribbon so its text is not hidden */
+.parcours-signature .parcours-badge {
+  margin-top: 4.5rem;
 }
 
 .parcours-signature:hover {
@@ -1560,7 +1565,7 @@ body.modal-open {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1877,7 +1882,7 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 400px));
   justify-content: center;
   gap: 2rem;
 }
@@ -2073,7 +2078,7 @@ footer {
   }
 
   .hero-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     text-align: center;
   }
 
