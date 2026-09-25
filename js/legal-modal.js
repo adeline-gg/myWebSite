@@ -217,5 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
         "Politique de Confidentialité",
       );
     }
+
+    const accessibilityLink = e.target.closest('a[href="#accessibilite"]');
+    if (accessibilityLink) {
+      e.preventDefault();
+      openModal("content/accessibilite.md", "Déclaration d'accessibilité");
+    }
   });
 });
