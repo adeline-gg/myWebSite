@@ -361,6 +361,7 @@
 
     // Floating button
     toggleBtnEl = createEl("button", {
+      id: "a11y-toggle",
       className: "a11y-toggle-btn",
       "aria-label": "Ouvrir les param\u00e8tres d'accessibilit\u00e9",
       "aria-expanded": "false",
