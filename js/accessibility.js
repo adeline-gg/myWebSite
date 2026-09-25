@@ -202,7 +202,8 @@
     Object.entries(FEATURES).forEach(([id, f]) => {
       const val = localStorage.getItem(f.key);
       if (f.type === "step") {
-        state[id] = val ? parseInt(val, 10) : 0;
+        // Stored value is the step itself ("150"), not its index
+        state[id] = Math.max(0, f.steps.indexOf(val));
       } else {
         state[id] = val === "1";
       }
@@ -267,6 +268,7 @@
     updateMaskPosition(window.innerHeight / 2);
     document.addEventListener("mousemove", onMaskMouseMove);
     document.addEventListener("touchmove", onMaskTouchMove, { passive: true });
+    document.addEventListener("focusin", onMaskFocusIn);
   }
 
   function removeReadingMask() {
@@ -280,6 +282,7 @@
     }
     document.removeEventListener("mousemove", onMaskMouseMove);
     document.removeEventListener("touchmove", onMaskTouchMove);
+    document.removeEventListener("focusin", onMaskFocusIn);
   }
 
   function updateMaskPosition(y) {
@@ -308,6 +311,15 @@
   }
   function onMaskTouchMove(e) {
     if (e.touches.length > 0) scheduleMaskUpdate(e.touches[0].clientY);
+  }
+  // Keyboard users: centre the strip on the focused element, measured on the
+  // next frame so the browser has scrolled it into view first
+  function onMaskFocusIn(e) {
+    if (e.target.closest(".a11y-widget")) return;
+    requestAnimationFrame(() => {
+      const r = e.target.getBoundingClientRect();
+      updateMaskPosition(r.top + r.height / 2);
+    });
   }
 
   /* -------------------------------------------------------
@@ -419,9 +431,16 @@
     ];
 
     categories.forEach((cat) => {
-      const section = createEl("div", { className: "a11y-section" });
+      const titleId = `a11y-section-${cat.id}`;
+      const section = createEl("div", {
+        className: "a11y-section",
+        role: "group",
+        "aria-labelledby": titleId,
+      });
       section.appendChild(
-        createEl("div", { className: "a11y-section-title" }, [cat.label]),
+        createEl("h3", { className: "a11y-section-title", id: titleId }, [
+          cat.label,
+        ]),
       );
       const grid = createEl("div", { className: "a11y-features" });
 
@@ -450,9 +469,9 @@
 
     const btn = createEl("button", {
       className: "a11y-feature-btn" + (isActive ? " active" : ""),
-      "aria-pressed": String(isActive),
       innerHTML: ICONS[f.icon],
     });
+    setButtonState(btn, f, id, isActive);
 
     const label = createEl("span", { className: "a11y-feature-label" }, [
       f.label,
@@ -475,6 +494,20 @@
     return btn;
   }
 
+  // Multi-level buttons expose their current level in their name
+  // (aria-pressed can only say on/off); toggles use aria-pressed
+  function setButtonState(btn, f, id, isActive) {
+    if (f.type === "step") {
+      const step = f.steps[state[id]];
+      btn.setAttribute(
+        "aria-label",
+        `${f.label} : ${step ? `${step} %` : "normale"}`,
+      );
+    } else {
+      btn.setAttribute("aria-pressed", String(isActive));
+    }
+  }
+
   function updateStepDots(container, f, stepIndex) {
     const dots = container.querySelectorAll(".a11y-step-dot");
     dots.forEach((dot, i) => {
@@ -489,7 +522,7 @@
     const isActive = f.type === "step" ? state[id] > 0 : state[id];
 
     btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-pressed", String(isActive));
+    setButtonState(btn, f, id, isActive);
 
     if (f.type === "step") {
       const dotsContainer = btn.querySelector(".a11y-step-dots");

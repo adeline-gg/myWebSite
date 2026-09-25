@@ -26,8 +26,8 @@
     attachServiceCardEvents();
 
     // Événements de fermeture du modal
-    modalClose?.addEventListener("click", closeModal);
-    modalOverlay?.addEventListener("click", closeModal);
+    modalClose?.addEventListener("click", () => closeModal());
+    modalOverlay?.addEventListener("click", () => closeModal());
 
     // Fermeture avec Échap + piège de focus
     document.addEventListener("keydown", (e) => {
@@ -66,9 +66,14 @@
       e.stopPropagation();
     });
 
-    // Fermer le modal quand on clique sur le bouton CTA
+    // Le bouton CTA ferme le modal puis mène à sa cible (#contact).
+    // Le clic ne remonte pas jusqu'au défilement global (stopPropagation) :
+    // défilement et focus sont gérés par closeModal.
     const modalCTA = modal?.querySelector(".service-modal-cta");
-    modalCTA?.addEventListener("click", closeModal);
+    modalCTA?.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeModal(document.querySelector(modalCTA.getAttribute("href")));
+    });
   }
 
   // Collecter les données des services depuis le DOM
@@ -122,8 +127,9 @@
     setTimeout(() => modalClose?.focus(), 100);
   }
 
-  // Fermer le modal
-  function closeModal() {
+  // Fermer le modal ; destination : section vers laquelle déplacer le focus
+  // au lieu de le rendre au déclencheur
+  function closeModal(destination) {
     // Ajouter la classe de fermeture pour l'animation
     modal.classList.add("closing");
 
@@ -133,11 +139,17 @@
       modal.classList.remove("closing");
       document.body.classList.remove("modal-open");
 
-      // Restaurer le focus sur l'élément déclencheur
-      if (triggerElement) {
+      if (destination) {
+        if (destination.tabIndex < 0)
+          destination.setAttribute("tabindex", "-1");
+        // Sans option behavior : suit scroll-behavior du CSS (réduction des animations)
+        destination.scrollIntoView({ block: "start" });
+        destination.focus({ preventScroll: true });
+      } else if (triggerElement) {
+        // Restaurer le focus sur l'élément déclencheur
         triggerElement.focus();
-        triggerElement = null;
       }
+      triggerElement = null;
     }, 250);
   }
 

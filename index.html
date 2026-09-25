@@ -202,6 +202,8 @@
               src="assets/images/hero-image.png"
               alt="Bureau aménagé pour un enfant autiste : planning visuel, carte « Je peux demander une pause », tableau des émotions et objets sensoriels"
               id="hero-image"
+              width="1536"
+              height="1024"
               loading="eager"
             />
           </div>
@@ -365,6 +367,8 @@
               src="assets/images/about-image.jpg"
               alt="Adeline Guillot Gueret - Enseignante spécialisée"
               id="about-image"
+              width="2758"
+              height="3448"
               loading="lazy"
             />
           </div>
@@ -1928,7 +1932,7 @@
             </svg>
             LinkedIn
           </a>
-          <a href="#contact" class="social-link">
+          <a href="mailto:adeline.gueret.g@gmail.com" class="social-link">
             <svg
               width="20"
               height="20"
@@ -1992,8 +1996,9 @@
               behavior: reduceMotion() ? "auto" : "smooth",
               block: "start",
             });
-            // Move keyboard/screen-reader focus along with the scroll
-            if (!target.hasAttribute("tabindex")) {
+            // Move keyboard/screen-reader focus along with the scroll;
+            // natively focusable targets (tabIndex >= 0) keep their tab order
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
               target.setAttribute("tabindex", "-1");
             }
             target.focus({ preventScroll: true });
@@ -2053,10 +2058,10 @@
                     flex-direction: column;
                     padding: 2rem;
                     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-                    animation: slideDown 0.3s ease;
+                    animation: menuSlideDown 0.3s ease;
                 }
 
-                @keyframes slideDown {
+                @keyframes menuSlideDown {
                     from {
                         opacity: 0;
                         transform: translateY(-20px);
@@ -2126,11 +2131,14 @@
       // Dynamic year in footer is now handled by js/app.js via renderMetadata()
 
       // Add loading animation to images
+      // (skip images already loaded: they never fire "load" and would pulse
+      // forever; a failed image stops pulsing too)
       document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) return;
         img.classList.add("loading");
-        img.addEventListener("load", function () {
-          this.classList.remove("loading");
-        });
+        const done = () => img.classList.remove("loading");
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
       });
 
       // Performance: Lazy loading for images

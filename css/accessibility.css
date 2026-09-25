@@ -203,6 +203,9 @@
 }
 
 .a11y-section-title {
+  margin: 0;
+  font-family: inherit;
+  line-height: inherit;
   font-size: 13px;
   font-weight: 600;
   color: #666666;

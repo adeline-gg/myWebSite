@@ -38,7 +38,16 @@ Cette déclaration a été établie le 24 septembre 2026.
 
 **Technologies utilisées :** HTML, CSS, JavaScript.
 
-**Outils utilisés pour l'évaluation :** tests automatisés axe-core, navigation au clavier, tests d'affichage de 320 à 1 540 pixels de large, sous Chrome.
+**Agents utilisateurs et technologies d'assistance utilisés :** navigateur Chrome (Chromium) sous Linux. Aucun lecteur d'écran n'a encore été utilisé pour les tests.
+
+**Outils utilisés pour l'évaluation :** tests automatisés axe-core, navigation au clavier, tests d'affichage de 320 à 1 540 pixels de large, test d'espacement du texte, simulation du mode de contraste élevé.
+
+**Pages du site ayant fait l'objet de la vérification :**
+
+- la page d'accueil (le site ne comporte qu'une page) ;
+- les fenêtres de détail des services ;
+- les fenêtres « Mentions légales », « Politique de confidentialité » et « Déclaration d'accessibilité » ;
+- le menu d'options d'accessibilité.
 
 ---
 
