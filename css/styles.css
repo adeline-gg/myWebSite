@@ -46,6 +46,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor targets and focused elements clear of the fixed nav (92px) */
+  scroll-padding-top: 6rem;
 }
 
 /* Outline (not box-shadow) so it survives Windows forced-colors mode */
@@ -355,6 +357,7 @@ nav.scrolled {
 
 .hero-image img {
   width: 100%;
+  height: auto;
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
 }
@@ -1469,6 +1472,7 @@ body.modal-open {
 
 .about-image img {
   width: 100%;
+  height: auto;
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
 }
