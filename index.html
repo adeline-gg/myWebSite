@@ -1992,8 +1992,9 @@
               behavior: reduceMotion() ? "auto" : "smooth",
               block: "start",
             });
-            // Move keyboard/screen-reader focus along with the scroll
-            if (!target.hasAttribute("tabindex")) {
+            // Move keyboard/screen-reader focus along with the scroll;
+            // natively focusable targets (tabIndex >= 0) keep their tab order
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
               target.setAttribute("tabindex", "-1");
             }
             target.focus({ preventScroll: true });
