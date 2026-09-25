@@ -807,17 +807,36 @@ body.modal-open {
   margin-bottom: 3rem;
 }
 
-.pricing-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
-  gap: 1rem;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background var(--transition-slow);
-  align-items: center;
+.pricing-table table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.pricing-row:last-child {
+.pricing-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background var(--transition-slow);
+}
+
+.pricing-row > * {
+  /* 0.4rem inner padding + 40% outer columns reproduce the former
+     2fr 1fr 2fr grid with a 1rem gap exactly */
+  padding: 1.5rem 0.4rem;
+  font-weight: inherit;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.pricing-row > :first-child {
+  width: 40%;
+  padding-left: 2rem;
+}
+
+.pricing-row > :last-child {
+  width: 40%;
+  padding-right: 2rem;
+}
+
+.pricing-table tbody .pricing-row:last-child {
   border-bottom: none;
 }
 
@@ -849,7 +868,7 @@ body.modal-open {
   color: var(--text-dark);
 }
 
-.pricing-amount {
+.pricing-row .pricing-amount {
   text-align: center;
 }
 
@@ -2158,13 +2177,26 @@ footer {
     gap: 2rem;
   }
 
-  .pricing-row {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 1rem;
+  .pricing-table table,
+  .pricing-table thead,
+  .pricing-table tbody,
+  .pricing-row,
+  .pricing-row > * {
+    display: block;
   }
 
-  .pricing-amount {
+  .pricing-row {
+    padding: 0.75rem 1rem;
+  }
+
+  .pricing-row > *,
+  .pricing-row > :first-child,
+  .pricing-row > :last-child {
+    width: auto;
+    padding: 0.25rem 0;
+  }
+
+  .pricing-row .pricing-amount {
     text-align: left;
   }
 
