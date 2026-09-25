@@ -202,7 +202,8 @@
     Object.entries(FEATURES).forEach(([id, f]) => {
       const val = localStorage.getItem(f.key);
       if (f.type === "step") {
-        state[id] = val ? parseInt(val, 10) : 0;
+        // Stored value is the step itself ("150"), not its index
+        state[id] = Math.max(0, f.steps.indexOf(val));
       } else {
         state[id] = val === "1";
       }
