@@ -420,9 +420,16 @@
     ];
 
     categories.forEach((cat) => {
-      const section = createEl("div", { className: "a11y-section" });
+      const titleId = `a11y-section-${cat.id}`;
+      const section = createEl("div", {
+        className: "a11y-section",
+        role: "group",
+        "aria-labelledby": titleId,
+      });
       section.appendChild(
-        createEl("div", { className: "a11y-section-title" }, [cat.label]),
+        createEl("h3", { className: "a11y-section-title", id: titleId }, [
+          cat.label,
+        ]),
       );
       const grid = createEl("div", { className: "a11y-features" });
 
