@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCurrentYear();
     initAnimationPausing();
     initNavbarScrollState();
-    console.log("✅ Application initialisée (mode SEO statique)");
   };
 
   // Lancer l'initialisation

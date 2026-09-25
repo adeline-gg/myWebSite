@@ -1903,6 +1903,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="social-link"
+            aria-label="Facebook (nouvelle fenêtre)"
           >
             <svg
               width="20"
@@ -1922,6 +1923,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="social-link"
+            aria-label="LinkedIn (nouvelle fenêtre)"
           >
             <svg
               width="20"
@@ -1955,12 +1957,14 @@
       <div class="footer-bottom">
         <p>
           &copy; <span id="current-year"></span> Adeline Guillot Gueret - Tous
-          droits réservés | SIREN: 978 658 607 | Site créé avec 💙 pour
-          l'inclusion scolaire | Création :
+          droits réservés | SIREN: 978 658 607 | Site créé avec
+          <span aria-hidden="true">💙</span> pour l'inclusion scolaire |
+          Création :
           <a
             href="https://xgueret.github.io/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="xgueret (nouvelle fenêtre)"
             >xgueret</a
           >
         </p>
@@ -2181,16 +2185,6 @@
           .querySelectorAll("img")
           .forEach((img) => imageObserver.observe(img));
       }
-
-      // Console welcome message
-      console.log(
-        "%c👋 Bienvenue sur le site d'Adeline Guillot Gueret!",
-        "color: #357C7A; font-size: 16px; font-weight: bold;",
-      );
-      console.log(
-        "%cCe site est optimisé pour l'accessibilité et la performance.",
-        "color: #718096; font-size: 12px;",
-      );
     </script>
 
     <!-- Structured Data / Schema.org -->
