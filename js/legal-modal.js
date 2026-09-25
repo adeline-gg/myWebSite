@@ -32,7 +32,6 @@ function convertMarkdownToHtml(markdown) {
 
   // Lists (simple handling)
   html = html.replace(/^\- (.*$)/gim, "<li>$1</li>");
-  html = html.replace(/(<li>.*<\/li>)/s, "<ul>$1</ul>");
 
   // Paragraphs (split by double newlines)
   const lines = html.split("\n");
@@ -45,6 +44,10 @@ function convertMarkdownToHtml(markdown) {
 
     // Skip if it's already a tag
     if (line.startsWith("<h") || line.startsWith("<hr") || line === "") {
+      if (inList) {
+        result.push("</ul>");
+        inList = false;
+      }
       if (paragraph.length > 0) {
         result.push("<p>" + paragraph.join(" ") + "</p>");
         paragraph = [];

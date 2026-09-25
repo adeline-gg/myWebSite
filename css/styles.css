@@ -2437,16 +2437,14 @@ footer {
 
 .legal-modal-body a {
   color: var(--primary);
-  text-decoration: none;
-  transition:
-    color var(--transition-slow),
-    border-bottom-color var(--transition-slow);
-  border-bottom: 1px solid transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-slow);
 }
 
 .legal-modal-body a:hover {
   color: var(--primary-dark);
-  border-bottom-color: var(--primary);
+  text-decoration-thickness: 2px;
 }
 
 .legal-modal-body a:focus-visible {
