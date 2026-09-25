@@ -450,9 +450,9 @@
 
     const btn = createEl("button", {
       className: "a11y-feature-btn" + (isActive ? " active" : ""),
-      "aria-pressed": String(isActive),
       innerHTML: ICONS[f.icon],
     });
+    setButtonState(btn, f, id, isActive);
 
     const label = createEl("span", { className: "a11y-feature-label" }, [
       f.label,
@@ -475,6 +475,20 @@
     return btn;
   }
 
+  // Multi-level buttons expose their current level in their name
+  // (aria-pressed can only say on/off); toggles use aria-pressed
+  function setButtonState(btn, f, id, isActive) {
+    if (f.type === "step") {
+      const step = f.steps[state[id]];
+      btn.setAttribute(
+        "aria-label",
+        `${f.label} : ${step ? `${step} %` : "normale"}`,
+      );
+    } else {
+      btn.setAttribute("aria-pressed", String(isActive));
+    }
+  }
+
   function updateStepDots(container, f, stepIndex) {
     const dots = container.querySelectorAll(".a11y-step-dot");
     dots.forEach((dot, i) => {
@@ -489,7 +503,7 @@
     const isActive = f.type === "step" ? state[id] > 0 : state[id];
 
     btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-pressed", String(isActive));
+    setButtonState(btn, f, id, isActive);
 
     if (f.type === "step") {
       const dotsContainer = btn.querySelector(".a11y-step-dots");
