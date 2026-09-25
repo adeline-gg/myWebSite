@@ -1281,16 +1281,20 @@ body.modal-open {
   box-shadow: none;
 }
 
+/* Both bottom corners sit on the card edges whatever the text width,
+   so extra letter or word spacing lengthens the ribbon instead of clipping it */
 .parcours-signature-ribbon {
   position: absolute;
-  top: 20px;
-  right: -35px;
+  top: 0;
+  right: 0;
   background: #ffc107;
   color: var(--text-dark);
   padding: 0.5rem 3rem;
   font-weight: 700;
   font-size: 0.9rem;
-  transform: rotate(45deg);
+  white-space: nowrap;
+  transform: translate(29.29%, -100%) rotate(45deg);
+  transform-origin: bottom left;
   box-shadow: var(--shadow-sm);
   z-index: var(--z-dropdown);
 }
@@ -1348,8 +1352,6 @@ body.modal-open {
   .parcours-signature-ribbon {
     font-size: 0.75rem;
     padding: 0.4rem 2.5rem;
-    top: 15px;
-    right: -40px;
   }
 
   .parcours-price {
