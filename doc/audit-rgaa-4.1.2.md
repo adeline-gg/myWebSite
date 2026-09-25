@@ -4,17 +4,19 @@
 > **Périmètre** : `index.html` (page unique), modale « services », modale « mentions légales / confidentialité », widget d'accessibilité.
 > **Méthode** : revue de code (HTML, CSS, JS) + tests automatisés (axe-core 4.10 dans Chromium) + tests ciblés (clavier, reflow 320 px, espacement du texte).
 > **Date** : 2026-09-24 — branche `docs/audit-rgaa-4.1.2`
+> **Mise à jour** : 2026-09-24 — toutes les actions P1, P2 et P3 sont corrigées, voir [Suivi des corrections](#-suivi-des-corrections).
 
 ## Table des matières
 
 1. [Mental Model](#-mental-model)
 2. [Synthèse](#-synthèse)
-3. [Priorité 1 — Bloquant](#-priorité-1--bloquant)
-4. [Priorité 2 — Majeur](#-priorité-2--majeur)
-5. [Priorité 3 — Mineur / bonnes pratiques](#-priorité-3--mineur--bonnes-pratiques)
-6. [Points conformes](#-points-conformes)
-7. [Limites de l'audit et tests manuels restants](#-limites-de-laudit-et-tests-manuels-restants)
-8. [Plan d'action](#-plan-daction)
+3. [Suivi des corrections](#-suivi-des-corrections)
+4. [Priorité 1 — Bloquant](#-priorité-1--bloquant)
+5. [Priorité 2 — Majeur](#-priorité-2--majeur)
+6. [Priorité 3 — Mineur / bonnes pratiques](#-priorité-3--mineur--bonnes-pratiques)
+7. [Points conformes](#-points-conformes)
+8. [Limites de l'audit et tests manuels restants](#-limites-de-laudit-et-tests-manuels-restants)
+9. [Plan d'action](#-plan-daction)
 
 ------
 
@@ -44,23 +46,64 @@
 
 ## 📊 Synthèse
 
-| Thématique RGAA | État | Critères non conformes relevés |
-|---|---|---|
-| 1. Images | ⚠️ | 1.3 — `alt` du hero erroné (SVG décoratifs en `aria-hidden` : OK) |
-| 3. Couleurs | ❌ | 3.2 (contrastes du texte), 3.3 (bordure des champs) |
-| 5. Tableaux | ❌ | 5.x — grille tarifaire codée en `<div>` |
-| 6. Liens | ⚠️ | 6.1 — globalement conforme, voir P3 |
-| 7. Scripts | ❌ | 7.1 (`aria-expanded` incorrect), 7.3 (carte cliquable) |
-| 8. Éléments obligatoires | ✅ Conforme | `lang="fr"`, `<title>` pertinent, doctype |
-| 9. Structuration | ❌ | 9.1 (hiérarchie des titres), 9.3 (listes) |
-| 10. Présentation | ❌ | 10.6, 10.7, 10.8, 10.11 |
-| 11. Formulaires | ❌ | 11.10, 11.13 |
-| 12. Navigation | ❌ | 12.6, 12.7, 12.8 |
-| 13. Consultation | ⚠️ | 13.8 (animations JS non désactivables par l'OS) |
+| Thématique RGAA | État à l'audit | Critères non conformes relevés | Après corrections |
+|---|---|---|---|
+| 1. Images | ⚠️ | 1.3 — `alt` du hero erroné (SVG décoratifs en `aria-hidden` : OK) | ✅ Corrigé |
+| 3. Couleurs | ❌ | 3.2 (contrastes du texte), 3.3 (bordure des champs) | ✅ Corrigé |
+| 5. Tableaux | ❌ | 5.x — grille tarifaire codée en `<div>` | ✅ Corrigé |
+| 6. Liens | ⚠️ | 6.1 — globalement conforme, voir P3 | ✅ Corrigé |
+| 7. Scripts | ❌ | 7.1 (`aria-expanded` incorrect), 7.3 (carte cliquable) | ✅ Corrigé |
+| 8. Éléments obligatoires | ✅ Conforme | `lang="fr"`, `<title>` pertinent, doctype | ✅ |
+| 9. Structuration | ❌ | 9.1 (hiérarchie des titres), 9.3 (listes) | ✅ Corrigé |
+| 10. Présentation | ❌ | 10.6, 10.7, 10.8, 10.11 | ✅ Corrigé |
+| 11. Formulaires | ❌ | 11.10, 11.13 | ✅ Corrigé |
+| 12. Navigation | ❌ | 12.6, 12.7, 12.8 | ✅ Corrigé |
+| 13. Consultation | ⚠️ | 13.8 (animations JS non désactivables par l'OS) | ✅ Corrigé |
 
 **Sortie axe-core (état stabilisé)** : 12 contrastes insuffisants, 1 lien indistinguable, 1 saut de titre, 66 contenus hors point de repère.
+**Après corrections** : **0 violation** sur la page entière (1280 et 320 px) et dans les 3 modales légales.
 
 > ⚠️ **Warning** : un taux de conformité RGAA officiel exige un audit complet des 106 critères sur un échantillon, avec des tests aux lecteurs d'écran. Ce document est un **pré-audit technique** : il identifie les non-conformités certaines, mais ne constitue pas une déclaration de conformité.
+
+------
+
+## 📈 Suivi des corrections
+
+> 💡 **Note** : les sections P1, P2 et P3 ci-dessous décrivent l'état **au moment de l'audit** et restent inchangées. Cette section trace les corrections. Chaque étape a été vérifiée en navigateur (axe-core, clavier, captures avant/après) avant son commit.
+
+| # | Action | Critères | Commit |
+|---|---|---|---|
+| 1.1 | Panneau d'accessibilité fermé masqué (`visibility: hidden`) | 10.8, 12.8 | `4cc68ea` |
+| 1.2 | Focus visible global en `outline`, hack `keyboard-nav` supprimé | 10.7 | `97995ca` |
+| 1.3 | `<header>`, `<main>` et lien d'évitement | 12.6, 12.7 | `7da4917` |
+| 1.4 | Contrastes corrigés (ruban, badges, liens, footer) | 3.2, 10.6 | `bb54ee7`, `b396163` |
+| 1.5 | Grilles en `minmax(min(…, 100%), 1fr)`, hero en `minmax(0, 1fr)` | 10.11 | `bcdf048` |
+| 1.6 | Formulaire : mention `*`, `autocomplete`, aides liées, bordures | 11.10, 11.13, 3.3 | `9375402` |
+| 2.1 | « Voir plus » : `aria-haspopup="dialog"`, intitulé complété, double gestionnaire retiré | 7.1, 6.1 | `278c911` |
+| 2.2 | Grille tarifaire en `<table>` (`caption`, `th scope`), rendu identique | 5.4, 5.6, 5.7 | `e8ea599` |
+| 2.3 | Hiérarchie des titres (page, footer, modales, `hgroup`) | 9.1 | `87c95a1` |
+| 2.4 | Listes en `<ul>` (✓ en `::before`, qualifications) | 9.3 | `db689da` |
+| 2.5 | Parallaxe, fondu et défilement doux conditionnés à la réduction des animations | 13.8 | `8760a59` |
+| 2.6 | Modale légale : `aria-busy`, `role="status"` / `role="alert"`, liens externes signalés | 7.1, 7.5, 13.2 | `98f3ea0` |
+| 2.7 | `alt` du hero décrivant réellement l'image | 1.3 | `b11a954` |
+| 3.1, 3.2, 3.8 | Nouvelles fenêtres signalées, emoji masqué, `console.log` retirés | 6.1 | `ec9ec8c` |
+| 3.3 | Chiffres clés du hero en `<ul>` | 9.3 | `fc39fa0` |
+| 3.4 | Menu mobile et barre de navigation pilotés en CSS | — | `9950936` |
+| 3.5 | Plus aucun style inline dans `index.html` | 10.1 | `245df74` |
+| 3.6 | Déclaration d'accessibilité (`content/accessibilite.md`), lien dans le footer | — | `9b37e11` |
+| 3.7 | Second lien d'évitement vers les options d'accessibilité | 12.8 | `31c199f` |
+
+### Défauts découverts pendant les corrections
+
+| Constat | Critère | Correction | Commit |
+|---|---|---|---|
+| Défilement horizontal de 74 px à 320 px : le mot « d'accompagnement » du titre des parcours dépassait l'écran | 10.11 | Titres de section réduits sur mobile, `overflow-wrap` sur les titres | `d7d3479` |
+| Adresses e-mail insécables qui élargissaient leur colonne quand le texte est agrandi | 10.11 | `overflow-wrap: anywhere` sur les liens `mailto:` et l'aide du champ e-mail | `d7d3479` |
+| Trois grilles oubliées en P1.5 (`.expertise-grid`, `.partners-grid`, `.footer-container`) | 10.11 | Même motif `min(…, 100%)` | `d7d3479` |
+| Modales légales : une expression régulière gourmande plaçait tout le texte entre la première et la dernière puce dans une seule `<ul>` (73 éléments non-`li` dans la politique de confidentialité) | 9.3 | Suppression de la regex, fermeture des listes dans la boucle de conversion | `fff553e` |
+| Liens des modales légales distingués par la seule couleur | 10.6 | Liens soulignés | `fff553e` |
+
+Hors audit : style des cartes de parcours (contour fin au repos, contour coloré de 3 px au survol), commit `1a33f55`.
 
 ------
 
@@ -235,8 +278,9 @@ footer :focus-visible {
 | Test | Pourquoi il reste à faire |
 |---|---|
 | NVDA + Firefox, VoiceOver + Safari iOS | Restitution réelle des modales, du glossaire et du formulaire |
-| Zoom navigateur à 200 % (10.4) | Seul le reflow à 320 px a été mesuré |
-| Mode contraste élevé Windows (`forced-colors`) | Confirmer la perte du focus (box-shadow) |
+| Zoom navigateur à 200 % (10.4) | Mesuré avec l'agrandissement du widget (jusqu'à 175 %) : aucun débordement de 375 à 1280 px. Zoom navigateur réel non testé |
+| Mode contraste élevé Windows (`forced-colors`) | Le focus est désormais un `outline` (conservé en `forced-colors`) : à confirmer visuellement |
+| Widget à 150 % et plus sur écran de 320 px | Des titres de cartes et descriptions de parcours débordent encore (18 à 50 px). Au-delà des exigences du RGAA, laissé en l'état |
 | Espacement du texte (10.12) | Débordement mesuré sur `.hero` et `.parcours-card` (overflow `hidden`) → **à confirmer visuellement** |
 | Pertinence de l'`alt` de `about-image.jpg` | `hero-image.png` vérifié → non conforme (voir 2.7) ; photo « Qui suis-je » à confirmer |
 | Page de succès Netlify Forms après envoi | Hors site, non auditée (langue, retour vers le site) |
@@ -245,21 +289,21 @@ footer :focus-visible {
 
 ## 🎓 Plan d'action
 
-| Ordre | Action | Critères | Fichiers | Effort |
-|---|---|---|---|---|
-| 1 | Masquer le panneau a11y fermé (`visibility` / `inert`) | 10.8, 12.8 | `accessibility.css`, `accessibility.js` | XS |
-| 2 | Focus visible global en `outline`, supprimer le hack `keyboard-nav` | 10.7 | `styles.css`, `index.html` | S |
-| 3 | `<header>`, `<main>`, lien d'évitement | 12.6, 12.7 | `index.html`, `styles.css` | S |
-| 4 | Corriger les 7 couples de contrastes | 3.2, 10.6 | `styles.css`, `index.html` | S |
-| 5 | Grilles en `minmax(min(…, 100%), 1fr)` | 10.11 | `styles.css` | XS |
-| 6 | Formulaire : mention `*`, `autocomplete`, bordures | 11.10, 11.13, 3.3 | `index.html`, `styles.css` | S |
-| 7 | Boutons « Voir plus » : ARIA + intitulé, retirer le double gestionnaire | 7.1, 6.1 | `index.html`, `app.js` | S |
-| 8 | Animations JS conditionnées à `prefers-reduced-motion` | 13.8 | `index.html` | S |
-| 9 | Tableau tarifaire en `<table>` | 5.x | `index.html`, `styles.css` | M |
-| 10 | Titres et listes | 9.1, 9.3 | `index.html`, `legal-modal.js` | M |
-| 11 | Modale légale : `aria-busy`, liens, erreur | 7.1 | `legal-modal.js` | S |
-| 12 | P3 + déclaration d'accessibilité | — | divers | S |
-| 13 | Campagne de tests manuels (lecteurs d'écran, zoom) | toutes | — | M |
+| Ordre | Action | Critères | Fichiers | Effort | Statut |
+|---|---|---|---|---|---|
+| 1 | Masquer le panneau a11y fermé (`visibility` / `inert`) | 10.8, 12.8 | `accessibility.css`, `accessibility.js` | XS | ✅ |
+| 2 | Focus visible global en `outline`, supprimer le hack `keyboard-nav` | 10.7 | `styles.css`, `index.html` | S | ✅ |
+| 3 | `<header>`, `<main>`, lien d'évitement | 12.6, 12.7 | `index.html`, `styles.css` | S | ✅ |
+| 4 | Corriger les 7 couples de contrastes | 3.2, 10.6 | `styles.css`, `index.html` | S | ✅ |
+| 5 | Grilles en `minmax(min(…, 100%), 1fr)` | 10.11 | `styles.css` | XS | ✅ |
+| 6 | Formulaire : mention `*`, `autocomplete`, bordures | 11.10, 11.13, 3.3 | `index.html`, `styles.css` | S | ✅ |
+| 7 | Boutons « Voir plus » : ARIA + intitulé, retirer le double gestionnaire | 7.1, 6.1 | `index.html`, `app.js` | S | ✅ |
+| 8 | Animations JS conditionnées à `prefers-reduced-motion` | 13.8 | `index.html` | S | ✅ |
+| 9 | Tableau tarifaire en `<table>` | 5.x | `index.html`, `styles.css` | M | ✅ |
+| 10 | Titres et listes | 9.1, 9.3 | `index.html`, `legal-modal.js` | M | ✅ |
+| 11 | Modale légale : `aria-busy`, liens, erreur | 7.1 | `legal-modal.js` | S | ✅ |
+| 12 | P3 + déclaration d'accessibilité | — | divers | S | ✅ |
+| 13 | Campagne de tests manuels (lecteurs d'écran, zoom) | toutes | — | M | ⏳ À faire |
 
 > 💡 **Note** : les actions 1 à 6 (toute la P1) tiennent dans une seule PR d'environ 100 lignes, surtout du CSS. À valider visuellement étape par étape, avec captures d'écran, avant chaque commit.
 
@@ -272,5 +316,6 @@ footer :focus-visible {
 ------
 
 > **Document créé le** : 2026-09-24
+> **Mis à jour le** : 2026-09-24 (suivi des corrections)
 > **Auteur** : pré-audit technique assisté par Claude Code
-> **Version** : 1.0
+> **Version** : 1.1
