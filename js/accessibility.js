@@ -268,6 +268,7 @@
     updateMaskPosition(window.innerHeight / 2);
     document.addEventListener("mousemove", onMaskMouseMove);
     document.addEventListener("touchmove", onMaskTouchMove, { passive: true });
+    document.addEventListener("focusin", onMaskFocusIn);
   }
 
   function removeReadingMask() {
@@ -281,6 +282,7 @@
     }
     document.removeEventListener("mousemove", onMaskMouseMove);
     document.removeEventListener("touchmove", onMaskTouchMove);
+    document.removeEventListener("focusin", onMaskFocusIn);
   }
 
   function updateMaskPosition(y) {
@@ -309,6 +311,15 @@
   }
   function onMaskTouchMove(e) {
     if (e.touches.length > 0) scheduleMaskUpdate(e.touches[0].clientY);
+  }
+  // Keyboard users: centre the strip on the focused element, measured on the
+  // next frame so the browser has scrolled it into view first
+  function onMaskFocusIn(e) {
+    if (e.target.closest(".a11y-widget")) return;
+    requestAnimationFrame(() => {
+      const r = e.target.getBoundingClientRect();
+      updateMaskPosition(r.top + r.height / 2);
+    });
   }
 
   /* -------------------------------------------------------
