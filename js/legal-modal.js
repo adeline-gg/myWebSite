@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="legal-modal-close" aria-label="Fermer">&times;</button>
                 </div>
                 <div class="legal-modal-body" id="legal-modal-body">
-                    <p style="text-align: center; color: var(--text-light);">Chargement...</p>
+                    <p class="legal-modal-status">Chargement…</p>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBody.setAttribute("aria-busy", "true");
     try {
       modalBody.innerHTML =
-        '<p role="status" style="text-align: center; color: var(--text-light);">Chargement…</p>';
+        '<p role="status" class="legal-modal-status">Chargement…</p>';
       const response = await fetch(mdFilePath);
       if (!response.ok) throw new Error(`Failed to load ${mdFilePath}`);
       const markdown = await response.text();
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Erreur lors du chargement du contenu:", error);
       modalBody.innerHTML =
-        '<p role="alert" style="color: #b42318; text-align: center;">Erreur : le contenu n\'a pas pu être chargé. Réessayez plus tard.</p>';
+        '<p role="alert" class="legal-modal-error">Erreur : le contenu n\'a pas pu être chargé. Réessayez plus tard.</p>';
     } finally {
       modalBody.removeAttribute("aria-busy");
     }

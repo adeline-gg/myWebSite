@@ -2432,6 +2432,19 @@ footer {
   color: var(--text-dark);
 }
 
+.legal-modal-body .legal-modal-status,
+.legal-modal-body .legal-modal-error {
+  text-align: center;
+}
+
+.legal-modal-body .legal-modal-status {
+  color: var(--text-light);
+}
+
+.legal-modal-body .legal-modal-error {
+  color: #b42318;
+}
+
 .legal-modal-body ul,
 .legal-modal-body ol {
   margin: 1rem 0 1rem 2rem;
