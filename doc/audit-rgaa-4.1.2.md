@@ -5,7 +5,7 @@
 > **Méthode** : revue de code (HTML, CSS, JS) + tests automatisés (axe-core 4.10 dans Chromium) + tests ciblés (clavier, reflow 320 px, espacement du texte).
 > **Date** : 2026-09-24 — branche `docs/audit-rgaa-4.1.2`
 > **Mise à jour** : 2026-09-24 — toutes les actions P1, P2 et P3 sont corrigées, voir [Suivi des corrections](#-suivi-des-corrections).
-> **Second audit** : 2026-09-24 sur `main` (`1e33090`) — 3 défauts majeurs et 9 mineurs, voir [Second audit](#-second-audit-après-corrections).
+> **Second audit** : 2026-09-24 sur `main` (`1e33090`) — 3 défauts majeurs et 9 mineurs, **tous corrigés**, voir [Second audit](#-second-audit-après-corrections).
 
 ## Table des matières
 
@@ -130,25 +130,35 @@ Hors audit : style des cartes de parcours (contour fin au repos, contour coloré
 
 ### 🟠 Défauts majeurs
 
-| # | Constat | Critère | Où | Correction |
-|---|---|---|---|---|
-| R1 | **Régression de P3.7** : le gestionnaire de défilement des ancres pose `tabindex="-1"` sur toute cible sans `tabindex`, y compris le bouton du widget. Après avoir utilisé le lien « Options d'accessibilité », le bouton **sort définitivement de l'ordre de tabulation** (vérifié : Tab après le dernier lien du footer mène au `body`) | 12.8, 7.3 | `index.html:1996-1997` | Ne poser `tabindex` que si la cible n'est pas déjà focalisable, ou exclure `#a11y-toggle` du gestionnaire |
-| R2 | Bouton « Me contacter pour ce service » de la modale service : la modale se ferme, la page défile vers `#contact`, puis la restitution du focus renvoie au bouton « Voir plus » et **fait remonter la page jusqu'à la carte**. L'utilisateur, souris ou clavier, n'arrive jamais au formulaire (vérifié : focus sur « Voir plus », `#contact` à 7 300 px sous l'écran) | 7.1, 12.8 | `js/service-modal.js:71`, `:137-138` | Ne pas restaurer le focus quand la fermeture vient du bouton d'action |
-| R3 | Boutons « Taille de texte » et « Hauteur de ligne » du widget : plusieurs niveaux (125, 150, 175 %) mais `aria-pressed` binaire. Le niveau courant n'est restitué que par des points visuels | 7.1 | `js/accessibility.js:453`, `:492` | `aria-label` dynamique (« Taille de texte : 150 % ») sans `aria-pressed` sur ces deux boutons |
+| # | Constat | Critère | Où | Correction | Commit |
+|---|---|---|---|---|---|
+| R1 | **Régression de P3.7** : le gestionnaire de défilement des ancres pose `tabindex="-1"` sur toute cible sans `tabindex`, y compris le bouton du widget. Après avoir utilisé le lien « Options d'accessibilité », le bouton **sort définitivement de l'ordre de tabulation** (vérifié : Tab après le dernier lien du footer mène au `body`) | 12.8, 7.3 | `index.html:1996-1997` | Ne poser `tabindex` que si la cible n'est pas déjà focalisable, ou exclure `#a11y-toggle` du gestionnaire | ✅ `e097509` |
+| R2 | Bouton « Me contacter pour ce service » de la modale service : la modale se ferme, la page défile vers `#contact`, puis la restitution du focus renvoie au bouton « Voir plus » et **fait remonter la page jusqu'à la carte**. L'utilisateur, souris ou clavier, n'arrive jamais au formulaire (vérifié : focus sur « Voir plus », `#contact` à 7 300 px sous l'écran) | 7.1, 12.8 | `js/service-modal.js:71`, `:137-138` | Ne pas restaurer le focus quand la fermeture vient du bouton d'action | ✅ `7928e4e` |
+| R3 | Boutons « Taille de texte » et « Hauteur de ligne » du widget : plusieurs niveaux (125, 150, 175 %) mais `aria-pressed` binaire. Le niveau courant n'est restitué que par des points visuels | 7.1 | `js/accessibility.js:453`, `:492` | `aria-label` dynamique (« Taille de texte : 150 % ») sans `aria-pressed` sur ces deux boutons | ✅ `7ca8380` |
 
 ### 🟡 Défauts mineurs et bonnes pratiques
 
-| # | Constat | Critère | Où | Correction |
-|---|---|---|---|---|
-| R4 | Avec l'espacement du texte de 10.12, le « O » du ruban « Offre Signature » est coupé (largeur fixe + `overflow: hidden` de la carte) | 10.12 | `.parcours-signature-ribbon` | Élargir le ruban ou le passer en étiquette non pivotée |
-| R5 | Titres de catégories du widget (« Texte », « Visuel », « Orientation ») en `<div>` | 9.1 (bonne pratique) | `js/accessibility.js:424` | `<h3>`, ou `role="group"` + `aria-labelledby` |
-| R6 | Masque de lecture déplaçable uniquement à la souris ou au toucher | Bonne pratique | `js/accessibility.js:268` | Suivre le focus (`focusin`) |
-| R7 | Pas de `scroll-padding-top` : une cible d'ancre ou un élément focalisé peut passer sous la barre fixe | Hors RGAA 4.1.2 (WCAG 2.4.11) | `css/styles.css` | `html { scroll-padding-top: 5rem }` |
-| R8 | Styles inline restants, générés par le JS de la modale légale | 10.1 | `js/legal-modal.js:97`, `:133` | Classes CSS |
-| R9 | Lien « Email » du footer qui pointe vers `#contact` : l'intitulé fait attendre un `mailto:` | 6.1 (confort) | `index.html:1930` | `href="mailto:…"` ou intitulé « Formulaire de contact » |
-| R10 | Déclaration d'accessibilité : pas d'échantillon de pages testées ni d'environnement de test (navigateur, technologies d'assistance), contrairement au modèle officiel | Déclaration | `content/accessibilite.md` | Compléter après les tests aux lecteurs d'écran |
-| R11 | Toutes les images reçoivent `.loading` (pulsation infinie) retiré seulement à l'événement `load` : une image déjà chargée pourrait pulser sans fin. Non reproduit en navigateur, mais fragile | 13.8 | `index.html:2130`, `css/styles.css:2301` | Tester `img.complete`, ou supprimer ce bloc |
-| R12 | Trois `@keyframes slideDown` différentes : la dernière écrase la première et la fermeture de la modale service joue une animation d'entrée | Hors RGAA | `css/styles.css:643`, `:2347`, `index.html:2059` | Renommer les animations |
+| # | Constat | Critère | Où | Correction | Commit |
+|---|---|---|---|---|---|
+| R4 | Avec l'espacement du texte de 10.12, le « O » du ruban « Offre Signature » est coupé (largeur fixe + `overflow: hidden` de la carte) | 10.12 | `.parcours-signature-ribbon` | Élargir le ruban ou le passer en étiquette non pivotée | ✅ `b8c6cc8` |
+| R5 | Titres de catégories du widget (« Texte », « Visuel », « Orientation ») en `<div>` | 9.1 (bonne pratique) | `js/accessibility.js:424` | `<h3>`, ou `role="group"` + `aria-labelledby` | ✅ `34b14e6` |
+| R6 | Masque de lecture déplaçable uniquement à la souris ou au toucher | Bonne pratique | `js/accessibility.js:268` | Suivre le focus (`focusin`) | ✅ `bd96198` |
+| R7 | Pas de `scroll-padding-top` : une cible d'ancre ou un élément focalisé peut passer sous la barre fixe | Hors RGAA 4.1.2 (WCAG 2.4.11) | `css/styles.css` | `html { scroll-padding-top: 5rem }` | ✅ `8e8d419` |
+| R8 | Styles inline restants, générés par le JS de la modale légale | 10.1 | `js/legal-modal.js:97`, `:133` | Classes CSS | ✅ `c55d457` |
+| R9 | Lien « Email » du footer qui pointe vers `#contact` : l'intitulé fait attendre un `mailto:` | 6.1 (confort) | `index.html:1930` | `href="mailto:…"` ou intitulé « Formulaire de contact » | ✅ `37c6c41` |
+| R10 | Déclaration d'accessibilité : pas d'échantillon de pages testées ni d'environnement de test (navigateur, technologies d'assistance), contrairement au modèle officiel | Déclaration | `content/accessibilite.md` | Compléter après les tests aux lecteurs d'écran | ✅ `d933e1b` |
+| R11 | Toutes les images reçoivent `.loading` (pulsation infinie) retiré seulement à l'événement `load` : une image déjà chargée pourrait pulser sans fin. Non reproduit en navigateur, mais fragile | 13.8 | `index.html:2130`, `css/styles.css:2301` | Tester `img.complete`, ou supprimer ce bloc | ✅ `5632945` |
+| R12 | Trois `@keyframes slideDown` différentes : la dernière écrase la première et la fermeture de la modale service joue une animation d'entrée | Hors RGAA | `css/styles.css:643`, `:2347`, `index.html:2059` | Renommer les animations | ✅ `ad1fc80` |
+
+### Défauts découverts pendant les corrections du second audit
+
+| Constat | Critère | Correction | Commit |
+|---|---|---|---|
+| Widget : la taille de texte et la hauteur de ligne choisies n'étaient jamais rétablies après un rechargement (valeur `"150"` relue comme un index) ; le panneau affichait pourtant le niveau maximal | 7.1 | Relecture par `steps.indexOf()` | `8273d8c` |
+| Liens du menu sur mobile : arrivée environ 320 px avant la section, car la photo « Qui suis-je » (chargement différé, sans dimensions) grandissait de 352 px pendant le défilement | — | Attributs `width` / `height` sur les images du hero et de « Qui suis-je » | `8e8d419` |
+| Modales légales jamais animées : `animation: … var(--transition-slow) ease` contenait deux fonctions de temporisation, donc déclaration invalide | — | Mêmes animations d'ouverture et de fermeture que la modale service | `ad1fc80` |
+
+**Après corrections** : 0 violation axe sur la page (1280 et 320 px), la modale service, le panneau d'accessibilité et les 3 modales légales ; aucun défilement horizontal ; 9/9 tests.
 
 ### Vérifié conforme lors du second audit
 
@@ -356,8 +366,8 @@ footer :focus-visible {
 | 11 | Modale légale : `aria-busy`, liens, erreur | 7.1 | `legal-modal.js` | S | ✅ |
 | 12 | P3 + déclaration d'accessibilité | — | divers | S | ✅ |
 | 13 | Campagne de tests manuels (lecteurs d'écran, zoom) | toutes | — | M | ⏳ À faire |
-| 14 | Second audit : R1 à R3 (widget, modale service) | 7.1, 7.3, 12.8 | `index.html`, `service-modal.js`, `accessibility.js` | S | ⏳ À faire |
-| 15 | Second audit : R4 à R12 | divers | divers | S | ⏳ À faire |
+| 14 | Second audit : R1 à R3 (widget, modale service) | 7.1, 7.3, 12.8 | `index.html`, `service-modal.js`, `accessibility.js` | S | ✅ |
+| 15 | Second audit : R4 à R12 | divers | divers | S | ✅ |
 
 > 💡 **Note** : les actions 1 à 6 (toute la P1) tiennent dans une seule PR d'environ 100 lignes, surtout du CSS. À valider visuellement étape par étape, avec captures d'écran, avant chaque commit.
 
@@ -370,6 +380,6 @@ footer :focus-visible {
 ------
 
 > **Document créé le** : 2026-09-24
-> **Mis à jour le** : 2026-09-24 (suivi des corrections, second audit)
+> **Mis à jour le** : 2026-09-25 (suivi des corrections, second audit et ses corrections)
 > **Auteur** : pré-audit technique assisté par Claude Code
-> **Version** : 1.2
+> **Version** : 1.3
