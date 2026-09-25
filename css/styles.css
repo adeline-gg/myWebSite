@@ -1961,6 +1961,19 @@ footer {
     opacity var(--transition-slow);
 }
 
+/* Hamburger turns into a cross while the menu is open */
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
 /* Tools Section - Boîte à outils */
 .tools {
   padding: 5rem 2rem;
