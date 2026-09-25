@@ -362,6 +362,8 @@ nav.scrolled {
 .hero-stats {
   display: flex;
   gap: 2.5rem;
+  list-style: none;
+  padding-left: 0;
   margin-top: 2.5rem;
   padding-top: 1.75rem;
   border-top: var(--border-soft);
