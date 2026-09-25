@@ -2131,11 +2131,14 @@
       // Dynamic year in footer is now handled by js/app.js via renderMetadata()
 
       // Add loading animation to images
+      // (skip images already loaded: they never fire "load" and would pulse
+      // forever; a failed image stops pulsing too)
       document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) return;
         img.classList.add("loading");
-        img.addEventListener("load", function () {
-          this.classList.remove("loading");
-        });
+        const done = () => img.classList.remove("loading");
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
       });
 
       // Performance: Lazy loading for images
