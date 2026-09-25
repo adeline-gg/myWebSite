@@ -410,6 +410,15 @@ nav.scrolled {
   color: var(--primary-dark);
 }
 
+.section-header .section-header-more {
+  margin-top: 1rem;
+}
+
+.section-header .section-header-aside {
+  font-style: italic;
+  color: var(--text-light);
+}
+
 .services-grid {
   max-width: 1200px;
   margin: 0 auto;
@@ -900,6 +909,12 @@ body.modal-open {
   color: var(--text-light);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.pricing-details-link {
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .pricing-note {
@@ -1720,6 +1735,14 @@ body.modal-open {
   gap: 1rem;
 }
 
+.contact-detail {
+  color: var(--text-light);
+}
+
+.contact-detail a {
+  color: var(--primary);
+}
+
 .contact-icon {
   width: 50px;
   height: 50px;
@@ -1878,6 +1901,11 @@ footer {
   margin-bottom: 1rem;
   color: white;
   font-size: 1.17rem;
+}
+
+.footer-about {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
 }
 
 .footer-section a {
