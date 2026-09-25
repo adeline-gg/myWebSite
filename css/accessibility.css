@@ -96,7 +96,12 @@
   background: var(--a11y-bg);
   z-index: var(--a11y-z-panel);
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  /* Hidden when closed so its buttons leave the tab order and the a11y tree;
+     the visibility delay keeps it visible while it slides out */
+  visibility: hidden;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
   overflow-y: auto;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -105,6 +110,10 @@
 
 .a11y-panel.active {
   transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform 0.3s ease,
+    visibility 0s;
 }
 
 @media (max-width: 768px) {
