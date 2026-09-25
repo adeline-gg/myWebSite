@@ -150,14 +150,19 @@ document.addEventListener("DOMContentLoaded", () => {
    * Close modal
    */
   const closeModal = () => {
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
+    // Même animation de fermeture que la modale service
+    modal.classList.add("closing");
 
-    // Restaurer le focus sur l'élément déclencheur
-    if (triggerElement) {
-      triggerElement.focus();
-      triggerElement = null;
-    }
+    setTimeout(() => {
+      modal.classList.remove("active", "closing");
+      document.body.style.overflow = "";
+
+      // Restaurer le focus sur l'élément déclencheur
+      if (triggerElement) {
+        triggerElement.focus();
+        triggerElement = null;
+      }
+    }, 250);
   };
 
   // Close button click

@@ -589,7 +589,7 @@ nav.scrolled {
 }
 
 .service-modal.closing .service-modal-content {
-  animation: slideDown 0.25s ease-out;
+  animation: modalOut 0.25s ease-out;
 }
 
 .service-modal-overlay {
@@ -643,7 +643,7 @@ nav.scrolled {
   }
 }
 
-@keyframes slideDown {
+@keyframes modalOut {
   from {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -2321,22 +2321,26 @@ footer {
   z-index: var(--z-modal);
   overflow-y: auto;
   padding: 2rem;
-  animation: fadeIn var(--transition-slow) ease;
 }
 
+/* Same open/close effects as the service modal */
 .legal-modal.active {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.legal-modal.active .legal-modal-content {
+  animation: slideUp 0.4s ease;
+}
+
+.legal-modal.closing {
+  animation: fadeOut 0.25s ease-out;
+}
+
+.legal-modal.closing .legal-modal-content {
+  animation: modalOut 0.25s ease-out;
 }
 
 .legal-modal-content {
@@ -2346,19 +2350,7 @@ footer {
   width: 100%;
   margin: 2rem auto;
   box-shadow: var(--shadow-xl);
-  animation: slideDown var(--transition-slow) ease;
   position: relative;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .legal-modal-header {
